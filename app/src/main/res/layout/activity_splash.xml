@@ -8,7 +8,7 @@
     tools:context=".Splash">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/img_car_sales"
         android:layout_width="319dp"
         android:layout_height="382dp"
         android:background="#1E1D1C"
@@ -17,5 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo"
+        android:contentDescription="@string/todo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
