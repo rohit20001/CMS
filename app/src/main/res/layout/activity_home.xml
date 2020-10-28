@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".home">
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,14 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bottom_navigation"
+        app:itemBackground="@color/colorAccent"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
         app:menu="@menu/bottom_navigation"
         android:layout_alignParentBottom="true"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="320dp"
-        android:text="Log Out"
-        android:onClick="logout"/>
 
 </RelativeLayout>
