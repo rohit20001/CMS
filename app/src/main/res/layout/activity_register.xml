@@ -33,7 +33,7 @@
             android:layout_marginTop="5dp"
             android:fontFamily="@font/gothambold"
             android:text="@string/tv_add_in_family_of"
-            android:textColor="#FFFFFF"
+            android:textColor="#F44336"
             android:textSize="32sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
