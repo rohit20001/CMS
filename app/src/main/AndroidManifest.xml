@@ -9,9 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Splash"></activity>
+        <activity android:name=".profile"></activity>
+        <activity android:name=".graph" />
+        <activity android:name=".personAdd" />
+        <activity
+            android:name=".add"
+            android:label="@string/title_activity_add" />
+        <activity android:name=".home" />
+        <activity android:name=".Splash" />
         <activity android:name=".Register" />
-        <activity android:name=".AddFamily" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
