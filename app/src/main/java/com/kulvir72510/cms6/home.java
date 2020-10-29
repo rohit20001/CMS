@@ -20,21 +20,21 @@ public class home extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
             @Override
             public void onNavigationItemReselected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.ic_add:
-                        startActivity(new Intent(getApplicationContext(), add.class));
-                        overridePendingTransition(0, 0);
-                    case R.id.ic_home:
-                        return;
-                    case R.id.ic_graph:
-                        startActivity(new Intent(getApplicationContext(),graph.class));
-                        overridePendingTransition(0, 0);
-                    case R.id.ic_personadd:
-                        startActivity(new Intent(getApplicationContext(),personAdd.class));
-                        overridePendingTransition(0, 0);
-                    case R.id.ic_profile:
-                        startActivity(new Intent(getApplicationContext(),profile.class));
-                        overridePendingTransition(0, 0);
+                int id=item.getItemId();
+                if(id == R.id.ic_home){
+                    return;
+                }
+                else if(id==R.id.ic_add){
+                    startActivity(new Intent(home.this,add.class));
+                }
+                else if(id==R.id.ic_graph){
+                    startActivity(new Intent(home.this,graph.class));
+                }
+                else if(id==R.id.ic_personadd){
+                    startActivity(new Intent(home.this,personAdd.class));
+                }
+                else if(id==R.id.ic_profile){
+                   startActivity(new Intent(home.this,profile.class));
                 }
             }
         });

@@ -20,21 +20,21 @@ public class personAdd extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
             @Override
             public void onNavigationItemReselected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.ic_add:
-                        startActivity(new Intent(getApplicationContext(),add.class));
-                        overridePendingTransition(0, 0);
-                    case R.id.ic_personadd:
-                        return;
-                    case R.id.ic_graph:
-                        startActivity(new Intent(getApplicationContext(),graph.class));
-                        overridePendingTransition(0, 0);
-                    case R.id.ic_home:
-                        startActivity(new Intent(getApplicationContext(),home.class));
-                        overridePendingTransition(0, 0);
-                    case R.id.ic_profile:
-                        startActivity(new Intent(getApplicationContext(),profile.class));
-                        overridePendingTransition(0, 0);
+                int id=item.getItemId();
+                if(id == R.id.ic_personadd){
+                    return;
+                }
+                else if(id==R.id.ic_add){
+                    startActivity(new Intent(personAdd.this,add.class));
+                }
+                else if(id==R.id.ic_graph){
+                    startActivity(new Intent(personAdd.this,graph.class));
+                }
+                else if(id==R.id.ic_home){
+                    startActivity(new Intent(personAdd.this,home.class));
+                }
+                else if(id==R.id.ic_profile){
+                    startActivity(new Intent(personAdd.this,profile.class));
                 }
             }
         });

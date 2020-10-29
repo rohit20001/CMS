@@ -20,21 +20,21 @@ public class graph extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
             @Override
             public void onNavigationItemReselected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.ic_add:
-                        startActivity(new Intent(getApplicationContext(),add.class));
-                        overridePendingTransition(0, 0);
-                    case R.id.ic_graph:
-                        return;
-                    case R.id.ic_home:
-                        startActivity(new Intent(getApplicationContext(),home.class));
-                        overridePendingTransition(0, 0);
-                    case R.id.ic_personadd:
-                        startActivity(new Intent(getApplicationContext(),personAdd.class));
-                        overridePendingTransition(0, 0);
-                    case R.id.ic_profile:
-                        startActivity(new Intent(getApplicationContext(),profile.class));
-                        overridePendingTransition(0, 0);
+                int id=item.getItemId();
+                if(id == R.id.ic_graph){
+                    return;
+                }
+                else if(id==R.id.ic_add){
+                    startActivity(new Intent(graph.this,add.class));
+                }
+                else if(id==R.id.ic_home){
+                    startActivity(new Intent(graph.this,home.class));
+                }
+                else if(id==R.id.ic_personadd){
+                    startActivity(new Intent(graph.this,personAdd.class));
+                }
+                else if(id==R.id.ic_profile){
+                    startActivity(new Intent(graph.this,profile.class));
                 }
             }
         });
