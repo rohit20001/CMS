@@ -17,12 +17,12 @@ public class profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.ic_profile);
-        bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onNavigationItemReselected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id=item.getItemId();
                 if(id == R.id.ic_profile){
-                    return;
+                    return false;
                 }
                 else if(id==R.id.ic_add){
                     startActivity(new Intent(profile.this,add.class));
@@ -40,6 +40,7 @@ public class profile extends AppCompatActivity {
                     startActivity(new Intent(profile.this,home.class));
                     overridePendingTransition(0, 0);
                 }
+                return true;
             }
         });
     }

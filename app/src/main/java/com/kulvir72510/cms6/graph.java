@@ -17,12 +17,12 @@ public class graph extends AppCompatActivity {
         setContentView(R.layout.activity_graph);
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.ic_graph);
-        bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onNavigationItemReselected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id=item.getItemId();
                 if(id == R.id.ic_graph){
-                    return;
+                    return false;
                 }
                 else if(id==R.id.ic_add){
                     startActivity(new Intent(graph.this,add.class));
@@ -40,6 +40,7 @@ public class graph extends AppCompatActivity {
                     startActivity(new Intent(graph.this,profile.class));
                     overridePendingTransition(0, 0);
                 }
+                return true;
             }
         });
     }

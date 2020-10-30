@@ -17,12 +17,12 @@ public class personAdd extends AppCompatActivity {
         setContentView(R.layout.activity_person_add);
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.ic_personadd);
-        bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onNavigationItemReselected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id=item.getItemId();
                 if(id == R.id.ic_personadd){
-                    return;
+                    return false;
                 }
                 else if(id==R.id.ic_add){
                     startActivity(new Intent(personAdd.this,add.class));
@@ -40,6 +40,7 @@ public class personAdd extends AppCompatActivity {
                     startActivity(new Intent(personAdd.this,profile.class));
                     overridePendingTransition(0, 0);
                 }
+                return true;
             }
         });
     }
