@@ -26,15 +26,19 @@ public class add extends AppCompatActivity {
                 }
                 else if(id==R.id.ic_home){
                     startActivity(new Intent(add.this,home.class));
+                    overridePendingTransition(0, 0);
                 }
                 else if(id==R.id.ic_graph){
                     startActivity(new Intent(add.this,graph.class));
+                    overridePendingTransition(0, 0);
                 }
                 else if(id==R.id.ic_personadd){
                     startActivity(new Intent(add.this,personAdd.class));
+                    overridePendingTransition(0, 0);
                 }
                 else if(id==R.id.ic_profile){
                     startActivity(new Intent(add.this,profile.class));
+                    overridePendingTransition(0, 0);
                 }
             }
         });

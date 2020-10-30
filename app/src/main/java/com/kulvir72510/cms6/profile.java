@@ -26,15 +26,19 @@ public class profile extends AppCompatActivity {
                 }
                 else if(id==R.id.ic_add){
                     startActivity(new Intent(profile.this,add.class));
+                    overridePendingTransition(0, 0);
                 }
                 else if(id==R.id.ic_graph){
                     startActivity(new Intent(profile.this,graph.class));
+                    overridePendingTransition(0, 0);
                 }
                 else if(id==R.id.ic_personadd){
                     startActivity(new Intent(profile.this,personAdd.class));
+                    overridePendingTransition(0, 0);
                 }
                 else if(id==R.id.ic_home){
                     startActivity(new Intent(profile.this,home.class));
+                    overridePendingTransition(0, 0);
                 }
             }
         });

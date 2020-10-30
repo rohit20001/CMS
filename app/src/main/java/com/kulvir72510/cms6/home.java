@@ -26,15 +26,19 @@ public class home extends AppCompatActivity {
                 }
                 else if(id==R.id.ic_add){
                     startActivity(new Intent(home.this,add.class));
+                    overridePendingTransition(0, 0);
                 }
                 else if(id==R.id.ic_graph){
                     startActivity(new Intent(home.this,graph.class));
+                    overridePendingTransition(0, 0);
                 }
                 else if(id==R.id.ic_personadd){
                     startActivity(new Intent(home.this,personAdd.class));
+                    overridePendingTransition(0, 0);
                 }
                 else if(id==R.id.ic_profile){
                    startActivity(new Intent(home.this,profile.class));
+                    overridePendingTransition(0, 0);
                 }
             }
         });
