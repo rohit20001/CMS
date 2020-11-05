@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public Button btn_login_with_google;
     public Button btn_login_with_facebook;
     public TextView tv_forgot_password;
+    public ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         btn_login_with_google= (Button) findViewById(R.id.btn_login_with_google);
         btn_login_with_facebook= (Button) findViewById(R.id.btn_login_with_facebook);
         tv_forgot_password= (TextView) findViewById(R.id.tv_forgot_password);
+        progressBar = findViewById(R.id.progressBar);
 
     }
 }
