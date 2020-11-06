@@ -21,6 +21,7 @@
         app:itemBackground="@color/colorAccent"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
-        app:menu="@menu/bottom_navigation3" />
+        app:menu="@menu/bottom_navigation2"
+        app:labelVisibilityMode="labeled"/>
 
 </RelativeLayout>

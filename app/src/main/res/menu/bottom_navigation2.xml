@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
     <item
         android:id="@+id/ic_home"
         android:icon="@drawable/ic_home"
-        android:title="Home"/>
+        android:title="Home"
+        android:enabled="true" />
     <item
         android:id="@+id/ic_graph"
         android:icon="@drawable/ic_graph"
-        android:title="graph"/>
+        android:title="graph"
+        android:enabled="true"/>
     <item
         android:id="@+id/ic_add"
         android:icon="@drawable/ic_add"
-        android:title="Add"/>
+        android:title="Add"
+        android:enabled="true"/>
+
     <item
         android:id="@+id/ic_profile"
         android:icon="@drawable/ic_persondetail"
-        android:title="Profile"/>
+        android:title="Profile"
+        android:enabled="true"/>
+
 </menu>
