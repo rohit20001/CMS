@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kulvir72510.cms6">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,6 +19,7 @@
         <activity android:name=".graph2" />
         <activity android:name=".home2" />
         <activity android:name=".MainActivity" />
+
         <activity android:name=".profile" />
         <activity android:name=".graph" />
         <activity android:name=".personAdd" />
@@ -24,14 +27,16 @@
             android:name=".add"
             android:label="@string/title_activity_add" />
         <activity android:name=".Splash" />
-        <activity android:name=".Register" />
-        <activity android:name=".home">
+        <activity android:name=".Register" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".home"/>
+
     </application>
 
 </manifest>

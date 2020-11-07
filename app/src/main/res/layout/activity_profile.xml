@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:visibility="visible"
     tools:context=".profile">
 
     <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="40dp"
@@ -23,7 +25,7 @@
             <ImageView
                 android:id="@+id/imageView5"
                 android:layout_width="match_parent"
-                android:layout_height="175dp"
+                android:layout_height="160dp"
                 android:clickable="true"
                 android:src="@drawable/car"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -33,9 +35,9 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/img_dp"
                 android:layout_width="227dp"
-                android:layout_height="180dp"
+                android:layout_height="160dp"
                 android:background="@drawable/circle"
                 android:src="@drawable/ic_persondetail"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -46,51 +48,51 @@
 
             <ImageView
                 android:id="@+id/imageView8"
-                android:layout_width="109dp"
-                android:layout_height="61dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="@drawable/circle"
                 android:src="@drawable/camera"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.8"
+                app:layout_constraintHorizontal_bias="0.7"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.3" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="6dp"
                 android:fontFamily="@font/gothambook"
                 android:text="Name"
                 android:textSize="25sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                app:layout_constraintTop_toBottomOf="@+id/img_dp"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/gothambold"
                 android:text="Position"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/et_full_name"
+                android:id="@+id/tv_email"
                 android:layout_width="320dp"
-                android:layout_height="43dp"
+                android:layout_height="38dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="10dp"
                 android:autofillHints=""
                 android:background="@drawable/border"
@@ -108,11 +110,11 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/tv_phone"
                 android:layout_width="320dp"
-                android:layout_height="43dp"
+                android:layout_height="38dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/border"
                 android:fontFamily="@font/gothambook"
                 android:gravity="left|center_vertical"
@@ -122,15 +124,15 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_full_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_email"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/tv_address"
                 android:layout_width="320dp"
-                android:layout_height="43dp"
+                android:layout_height="38dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/border"
                 android:fontFamily="@font/gothambook"
                 android:gravity="left|center_vertical"
@@ -140,15 +142,15 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView8"
+                app:layout_constraintTop_toBottomOf="@+id/tv_phone"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/tv_city"
                 android:layout_width="320dp"
-                android:layout_height="43dp"
+                android:layout_height="38dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/border"
                 android:fontFamily="@font/gothambook"
                 android:gravity="left|center_vertical"
@@ -158,7 +160,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/tv_address"
                 app:layout_constraintVertical_bias="0.0" />
 
             <Button
@@ -176,7 +178,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView11"
+                app:layout_constraintTop_toBottomOf="@+id/tv_city"
                 app:layout_constraintVertical_bias="0.0" />
 
             <Button
@@ -195,20 +197,242 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/button"
-                app:layout_constraintTop_toBottomOf="@+id/textView11"
+                app:layout_constraintTop_toBottomOf="@+id/tv_city"
                 app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Log out"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_city"
+                app:layout_constraintVertical_bias="1.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+    <!--<ScrollView
+        android:id="@+id/G_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="40dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/G_constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".profile">
+
+
+            <ImageView
+                android:id="@+id/gimageView5"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:clickable="true"
+                android:src="@drawable/car"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/gimg_dp"
+                android:layout_width="227dp"
+                android:layout_height="160dp"
+                android:background="@drawable/circle"
+                android:src="@drawable/ic_persondetail"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.144" />
+
+            <ImageView
+                android:id="@+id/gimageView8"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/circle"
+                android:src="@drawable/camera"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.3" />
+
+            <TextView
+                android:id="@+id/gtv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/gothambook"
+                android:text="Name"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gimg_dp"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/gtextView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/gothambold"
+                android:text="Google"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gtv_name"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/gtv_email"
+                android:layout_width="320dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:autofillHints=""
+                android:background="@drawable/border"
+                android:ems="10"
+                android:fontFamily="@font/gothambook"
+                android:gravity="left|center_vertical"
+                android:hint="Email"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gtextView6"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/gtv_phone"
+                android:layout_width="320dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/border"
+                android:fontFamily="@font/gothambook"
+                android:gravity="left|center_vertical"
+                android:hint="Phone"
+                android:paddingLeft="20dp"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gtv_email"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/gtv_address"
+                android:layout_width="320dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/border"
+                android:fontFamily="@font/gothambook"
+                android:gravity="left|center_vertical"
+                android:hint="Address"
+                android:paddingLeft="20dp"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gtv_phone"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/gtv_city"
+                android:layout_width="320dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/border"
+                android:fontFamily="@font/gothambook"
+                android:gravity="left|center_vertical"
+                android:hint="City"
+                android:paddingLeft="20dp"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gtv_address"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/gbutton"
+                android:layout_width="145dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/button"
+                android:fontFamily="@font/gothambook"
+                android:text="Edit Profile"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gtv_city"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/gbutton2"
+                android:layout_width="145dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="92dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/button"
+                android:fontFamily="@font/gothambook"
+                android:text="Update Password"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/gbutton"
+                app:layout_constraintTop_toBottomOf="@+id/gtv_city"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/gbtn_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Log out"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gtv_city"
+                app:layout_constraintVertical_bias="1.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>-->
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom_navigation"
-        app:itemBackground="@color/colorAccent"
-        app:itemTextColor="@drawable/selector"
-        app:itemIconTint="@drawable/selector"
-        app:menu="@menu/bottom_navigation"
         android:layout_alignParentBottom="true"
-        app:labelVisibilityMode="labeled"/>
+        app:itemBackground="@color/colorAccent"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_navigation" />
 
 </RelativeLayout>

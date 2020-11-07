@@ -1,13 +1,31 @@
 package com.kulvir72510.cms6;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Register extends AppCompatActivity {
 
@@ -21,10 +39,14 @@ public class Register extends AppCompatActivity {
     public RadioButton rbtn_male;
     public RadioButton rbtn_female;
     public EditText et_phone;
-    public RadioButton rbtn_monitor;
-    public RadioButton rbtn_admin;
+    public EditText et_email_id;
     public EditText et_password_family;
     public Button btn_save;
+    public ProgressBar progressBar2;
+    FirebaseAuth fAuth;
+    String userId;
+    FirebaseFirestore fStore;
+    private static final String TAG ="TAG" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +57,88 @@ public class Register extends AppCompatActivity {
         tv_add_in_family_of=(TextView) findViewById(R.id.tv_add_in_family_of);
         tv_cms=(TextView) findViewById(R.id.tv_cms);
         img_back=(ImageView) findViewById(R.id.img_back);
-        et_full_name=(EditText) findViewById(R.id.et_full_name);
+        et_full_name=(EditText) findViewById(R.id.tv_email);
         et_address=(EditText) findViewById(R.id.et_address);
         et_city=(EditText) findViewById(R.id.et_city);
         rbtn_male=(RadioButton) findViewById(R.id.rbtn_male);
         rbtn_female=(RadioButton) findViewById(R.id.rbtn_female);
         et_phone=(EditText) findViewById(R.id.et_phone);
-        rbtn_monitor=(RadioButton) findViewById(R.id.rbtn_monitor);
-        rbtn_admin=(RadioButton) findViewById(R.id.rbtn_admin);
         et_password_family=(EditText) findViewById(R.id.et_password_family);
         btn_save=(Button) findViewById(R.id.btn_save);
-    }
+        progressBar2 = findViewById(R.id.progressBar2);
+        et_email_id= findViewById(R.id.et_email_id);
+        fAuth = FirebaseAuth.getInstance();
+        fStore=FirebaseFirestore.getInstance();
+
+        if (fAuth.getCurrentUser()!=null){
+            startActivity(new Intent(getApplicationContext(),home.class));
+            finish();
+
+        }
+
+        btn_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String email = et_email_id.getText().toString().trim();
+                final String password = et_password_family.getText().toString().trim();
+                final String fullname= et_full_name.getText().toString().trim();
+                final String address = et_address.getText().toString().trim();
+                final String city = et_city.getText().toString();
+                final long phoneno = Long.parseLong(et_phone.getText().toString().trim());
+
+                if (TextUtils.isEmpty(email)){
+                    et_email_id.setError("email is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(password)){
+                    et_password_family.setError("password is required");
+                    return;
+                }
+                if(password.length()<6){
+                    et_password_family.setError("enter password more than 6");
+                    return;
+                }
+                progressBar2.setVisibility(View.VISIBLE);
+
+                //register the user in firebase
+                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(Register.this,"User Created",Toast.LENGTH_LONG).show();
+                            userId = fAuth.getCurrentUser().getUid();
+                            DocumentReference documentReference= fStore.collection("users").document(userId);
+                            Map<String,Object> user= new HashMap<>();
+                            user.put("Full_Name",fullname);
+                            user.put("Phone",phoneno);
+                            user.put("Email",email);
+                            user.put("Password",password);
+                            user.put("Address",address);
+                            user.put("city",city);
+                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d(TAG,"user profile created successfully"+userId);
+                                }
+                            });
+                            startActivity(new Intent(getApplicationContext(),home.class));
+                        }else {
+                            Toast.makeText(Register.this,"Error"+task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                            progressBar2.setVisibility(View.GONE);
+                        }
+                    }
+                });
+
+
+            }
+        });
+
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            }
+        });
+
+            }
 }
