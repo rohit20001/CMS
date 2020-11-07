@@ -109,7 +109,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rbtn_monitor"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup2"
             app:layout_constraintVertical_bias="0.0" />
 
         <EditText
@@ -147,38 +147,40 @@
             app:layout_constraintVertical_bias="0.0"
             android:autofillHints="" />
 
-        <RadioButton
-            android:id="@+id/rbtn_male"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/radioGroup1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/gothambold"
-            android:text="@string/rbtn_male"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:orientation="horizontal"
+            android:paddingTop="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_email_id"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0">
 
-        <RadioButton
-            android:id="@+id/rbtn_female"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/gothambold"
-            android:text="@string/rbtn_female"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.6"
-            app:layout_constraintStart_toEndOf="@+id/rbtn_male"
-            app:layout_constraintTop_toBottomOf="@+id/et_email_id"
-            app:layout_constraintVertical_bias="0.0" />
+            <RadioButton
+                android:id="@+id/rbtn_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:fontFamily="@font/gothambold"
+                android:text="@string/rbtn_male"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/rbtn_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/gothambold"
+                android:text="@string/rbtn_female"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </RadioGroup>
 
         <EditText
             android:id="@+id/et_phone"
@@ -194,41 +196,45 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rbtn_male"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup1"
             app:layout_constraintVertical_bias="0.0"
             android:autofillHints="" />
-
-        <RadioButton
-            android:id="@+id/rbtn_monitor"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/radioGroup2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/gothambold"
-            android:text="@string/rbtn_monitor"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:orientation="horizontal"
+            android:paddingTop="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_phone"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0">
+
+        <RadioButton
+            android:id="@+id/rbtn_monitor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:fontFamily="@font/gothambold"
+            android:text="Monitor"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            />
 
         <RadioButton
             android:id="@+id/rbtn_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="20dp"
             android:fontFamily="@font/gothambold"
-            android:text="@string/rbtn_admin"
+            android:text="Admin"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/rbtn_monitor"
-            app:layout_constraintTop_toBottomOf="@+id/et_phone"
-            app:layout_constraintVertical_bias="0.0" />
+            android:textSize="20sp" />
+             />
+        </RadioGroup>
 
         <EditText
             android:id="@+id/et_password_family"

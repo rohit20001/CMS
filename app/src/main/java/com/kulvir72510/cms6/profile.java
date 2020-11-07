@@ -117,8 +117,6 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
         });
 
         userId = fAuth.getCurrentUser().getUid();
-
-
         DocumentReference documentReference=fStore.collection("users").document(userId);
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -174,7 +172,6 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
             GoogleSignInAccount googleSignInAccount=result.getSignInAccount();
             tv_name.setText(googleSignInAccount.getDisplayName() );
             tv_email.setText(googleSignInAccount.getEmail());
-
             Picasso.get().load(googleSignInAccount.getPhotoUrl()).placeholder(R.mipmap.ic_launcher).into(img_dp);
         }
         else {
