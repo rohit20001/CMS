@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "40217852022",
+    "firebase_url": "https://cms6-ceb36.firebaseio.com",
+    "project_id": "cms6-ceb36",
+    "storage_bucket": "cms6-ceb36.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40217852022:android:5cb6b8e529812b91fcc757",
+        "android_client_info": {
+          "package_name": "com.kulvir72510.cms6"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "40217852022-1p6r7tkgh02nkkssq918989vs79c1v62.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcZy3a1OJDBFbnOLXdoYEXTgWeqt48Gek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "40217852022-1p6r7tkgh02nkkssq918989vs79c1v62.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
