@@ -45,15 +45,54 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     public Button btn_login_with_facebook;
     public TextView tv_forgot_password;
     public ProgressBar progressBar;
-    FirebaseAuth fAuth;
+    FirebaseAuth fAuth = FirebaseAuth.getInstance();
     String position="";
-    FirebaseFirestore fStore;
+    FirebaseFirestore fStore=FirebaseFirestore.getInstance();
     ScrollView scroll;
     ScrollView G_scroll;
 
     public GoogleApiClient googleApiClient;
     public static final int SIGN_IN=1;
-    private String userId;
+    public static  String userId;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (fAuth.getCurrentUser()!=null){
+            userId = fAuth.getCurrentUser().getUid();
+            DocumentReference documentReference=fStore.collection("users").document(userId);
+            documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if (documentSnapshot.exists()){
+                        position = documentSnapshot.getString("Full_Name");
+                        System.out.println(position);
+                        Toast.makeText(MainActivity.this,"User Logged in successfully",Toast.LENGTH_LONG).show();
+
+
+                        if (position.equals("Admin")){
+
+                            startActivity(new Intent(getApplicationContext(),home.class));
+                        finish();}
+                        else if (position.equals("Monitor")){
+
+                            startActivity(new Intent(getApplicationContext(),home2.class));
+                            finish();}
+                        else{
+
+                            startActivity(new Intent(getApplicationContext(),home3.class));
+                            finish();}
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getApplicationContext(),"sorry error !!",Toast.LENGTH_LONG).show();
+                }
+            });
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,42 +108,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         btn_login_with_facebook= (Button) findViewById(R.id.btn_login_with_facebook);
         tv_forgot_password= (TextView) findViewById(R.id.tv_forgot_password);
         progressBar = findViewById(R.id.progressBar);
-        fAuth = FirebaseAuth.getInstance();
-        fStore=FirebaseFirestore.getInstance();
+
         //scroll = findViewById(R.layout.);
         //G_scroll = findViewById(R.id.G_scroll);
         //loginManager = LoginManager.getInstance();
-        if (fAuth.getCurrentUser()!=null){
-            userId = fAuth.getCurrentUser().getUid();
-            DocumentReference documentReference=fStore.collection("users").document(userId);
-            documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                @Override
-                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    if (documentSnapshot.exists()){
-                        position = documentSnapshot.getString("Full_Name");
-                        System.out.println(position);
-                        Toast.makeText(MainActivity.this,"User Logged in successfully",Toast.LENGTH_LONG).show();
 
-
-                        if (position.equals("Admin")){
-
-                            startActivity(new Intent(getApplicationContext(),home.class));}
-                        else if (position.equals("Monitor")){
-
-                            startActivity(new Intent(getApplicationContext(),home2.class));}
-                        else{
-
-                            startActivity(new Intent(getApplicationContext(),home3.class));}
-                    }
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getApplicationContext(),"sorry error !!",Toast.LENGTH_LONG).show();
-                }
-            });
-
-        }
 
 
 

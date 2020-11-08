@@ -3,6 +3,7 @@
     package="com.kulvir72510.cms6">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +19,13 @@
         <activity android:name=".add2" />
         <activity android:name=".graph2" />
         <activity android:name=".home2" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".profile" />
         <activity android:name=".graph" />
@@ -27,13 +34,8 @@
             android:name=".add"
             android:label="@string/title_activity_add" />
         <activity android:name=".Splash" />
-        <activity android:name=".Register" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".Register" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <activity android:name=".home"/>
 

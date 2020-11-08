@@ -44,13 +44,13 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
 
     Button btn_logout,gbtn_logout;
     DatabaseReference databaseReference;
-    FirebaseFirestore fStore;
+    FirebaseFirestore fStore=FirebaseFirestore.getInstance();
     String userId;
     Uri imageUri;
     String myUrl= "";
     StorageTask uploadTask;
     StorageReference storageProfileReference;
-    FirebaseAuth fAuth;
+    FirebaseAuth fAuth = FirebaseAuth.getInstance();
     TextView tv_email, tv_city, tv_address,tv_phone,tv_name,tv_pos;
     TextView gtv_email, gtv_city, gtv_address,gtv_phone,gtv_name;
     private GoogleApiClient googleApiClient;
@@ -63,18 +63,30 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
     protected void onStart() {
         super.onStart();
 
-        OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(googleApiClient);
-        if (opr.isDone()){
-            GoogleSignInResult result = opr.get();
-            handleSignInResult(result);
-        }else {
-            opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
-                @Override
-                public void onResult(@NonNull GoogleSignInResult result) {
-                    handleSignInResult(result);
+        userId = fAuth.getCurrentUser().getUid();
+        System.out.println(userId);
+        DocumentReference documentReference=fStore.collection("users").document(userId);
+        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()){
+                    String p = String.valueOf(documentSnapshot.getLong("Phone"));
+                    tv_name.setText("Hello! "+documentSnapshot.getString("Full_Name"));
+                    tv_pos.setText(documentSnapshot.getString("position"));
+                    tv_email.setText(documentSnapshot.getString("Email"));
+                    tv_address.setText(documentSnapshot.getString("Address"));
+                    tv_city.setText(documentSnapshot.getString("city"));
+                    tv_phone.setText(p);
+
                 }
-            });
-        }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(),"sorry error !!",Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
     @Override
@@ -93,8 +105,8 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
         scroll = findViewById(R.id.scroll);
         tv_pos=findViewById(R.id.tv_pos);
        // G_scroll = findViewById(R.id.G_scroll);
-        fStore=FirebaseFirestore.getInstance();
-        fAuth = FirebaseAuth.getInstance();
+
+
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleApiClient= new GoogleApiClient.Builder(this).enableAutoManage(this,this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API,gso).build();
@@ -126,28 +138,6 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
             }
         });
 
-        userId = fAuth.getCurrentUser().getUid();
-        DocumentReference documentReference=fStore.collection("users").document(userId);
-        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()){
-                    String p = String.valueOf(documentSnapshot.getLong("Phone"));
-                    tv_name.setText("Hello! "+documentSnapshot.getString("Full_Name"));
-                    tv_pos.setText(documentSnapshot.getString("position"));
-                    tv_email.setText(documentSnapshot.getString("Email"));
-                    tv_address.setText(documentSnapshot.getString("Address"));
-                    tv_city.setText(documentSnapshot.getString("city"));
-                    tv_phone.setText(p);
-
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(),"sorry error !!",Toast.LENGTH_LONG).show();
-            }
-        });
 
 
         btn_logout.setOnClickListener(new View.OnClickListener() {

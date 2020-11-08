@@ -16,7 +16,7 @@ public class add2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add2);
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation2);
-        bottomNavigationView.setSelectedItemId(R.id.ic_graph);
+        bottomNavigationView.setSelectedItemId(R.id.ic_add);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

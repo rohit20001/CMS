@@ -34,7 +34,7 @@ public class personAdd extends AppCompatActivity {
     Button btn_save;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    String userId;
+    String userId2;
     private static final String TAG ="TAG" ;
 
     @Override
@@ -132,9 +132,11 @@ public class personAdd extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
                                 Toast.makeText(personAdd.this,"User Created",Toast.LENGTH_LONG).show();
-                                userId = fAuth.getCurrentUser().getUid();
+                                System.out.println(userId2);
+                                userId2 = fAuth.getUid();
+                                System.out.println(userId2);
 
-                                DocumentReference documentReference= fStore.collection("users").document(userId);
+                                DocumentReference documentReference= fStore.collection("users").document(userId2);
                                 Map<String,Object> user= new HashMap<>();
                                 user.put("Full_Name",name);
                                 user.put("Phone",phoneno);
@@ -157,10 +159,12 @@ public class personAdd extends AppCompatActivity {
                                 documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        Log.d(TAG,"user profile created successfully"+userId);
+                                        Log.d(TAG,"user profile created successfully"+userId2);
                                     }
                                 });
-                                startActivity(new Intent(getApplicationContext(),home.class));
+
+                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                finish();
                             }else {
                                 Toast.makeText(personAdd.this,"Error"+task.getException().getMessage(),Toast.LENGTH_LONG).show();
 
