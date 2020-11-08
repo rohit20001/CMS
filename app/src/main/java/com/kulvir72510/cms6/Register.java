@@ -119,6 +119,7 @@ public class Register extends AppCompatActivity {
                 final long phoneno = Long.parseLong(et_phone.getText().toString().trim());
                 final String m = rbtn_male.getText().toString();
                 final String f = rbtn_female.getText().toString();
+                final String position = "user";
 
 
                 if (TextUtils.isEmpty(email)){
@@ -168,6 +169,7 @@ public class Register extends AppCompatActivity {
                             user.put("Password",password);
                             user.put("Address",address);
                             user.put("city",city);
+                            user.put("position",position);
                             if (rbtn_male.isChecked()){
                                 user.put("Gender",m);
                             }
@@ -180,7 +182,7 @@ public class Register extends AppCompatActivity {
                                     Log.d(TAG,"user profile created successfully"+userId);
                                 }
                             });
-                            startActivity(new Intent(getApplicationContext(),home.class));
+                            startActivity(new Intent(getApplicationContext(),home3.class));
                         }else {
                             Toast.makeText(Register.this,"Error"+task.getException().getMessage(),Toast.LENGTH_LONG).show();
                             progressBar2.setVisibility(View.GONE);

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -52,6 +53,8 @@ public class profile3 extends AppCompatActivity implements GoogleApiClient.OnCon
     ImageView img_dp;
     ScrollView scroll;
     ScrollView G_scroll;
+    String TAG;
+    private ArrayList<String> mArrayList;
 
 
     @Override
@@ -111,10 +114,6 @@ public class profile3 extends AppCompatActivity implements GoogleApiClient.OnCon
                 return true;
             }
         });
-
-
-
-
 
         userId = fAuth.getCurrentUser().getUid();
 
@@ -180,4 +179,5 @@ public class profile3 extends AppCompatActivity implements GoogleApiClient.OnCon
             return;
         }
     }
+
 }

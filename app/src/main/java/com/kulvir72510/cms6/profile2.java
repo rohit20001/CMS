@@ -42,7 +42,7 @@ public class profile2 extends AppCompatActivity implements GoogleApiClient.OnCon
     FirebaseFirestore fStore;
     String userId;
     FirebaseAuth fAuth;
-    TextView tv_email, tv_city, tv_address,tv_phone,tv_name;
+    TextView tv_email, tv_city, tv_address,tv_phone,tv_name,tv_pos;
     TextView gtv_email, gtv_city, gtv_address,gtv_phone,gtv_name;
     private GoogleApiClient googleApiClient;
     private GoogleSignInOptions gso;
@@ -82,6 +82,7 @@ public class profile2 extends AppCompatActivity implements GoogleApiClient.OnCon
         tv_name = findViewById(R.id.tv_name);
         img_dp = findViewById(R.id.img_dp);
         scroll = findViewById(R.id.scroll);
+        tv_pos=findViewById(R.id.tv_pos);
         // G_scroll = findViewById(R.id.G_scroll);
         fStore=FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
@@ -97,15 +98,15 @@ public class profile2 extends AppCompatActivity implements GoogleApiClient.OnCon
                     return false;
                 }
                 else if(id==R.id.ic_add){
-                    startActivity(new Intent(profile2.this,add.class));
+                    startActivity(new Intent(profile2.this,add2.class));
                     overridePendingTransition(0, 0);
                 }
                 else if(id==R.id.ic_graph){
-                    startActivity(new Intent(profile2.this,graph.class));
+                    startActivity(new Intent(profile2.this,graph2.class));
                     overridePendingTransition(0, 0);
                 }
                 else if(id==R.id.ic_home){
-                    startActivity(new Intent(profile2.this,home.class));
+                    startActivity(new Intent(profile2.this,home2.class));
                     overridePendingTransition(0, 0);
                 }
                 return true;
@@ -120,6 +121,7 @@ public class profile2 extends AppCompatActivity implements GoogleApiClient.OnCon
                 if (documentSnapshot.exists()){
                     String p = String.valueOf(documentSnapshot.getLong("Phone"));
                     tv_name.setText("Hello! "+documentSnapshot.getString("Full_Name"));
+                    tv_pos.setText(documentSnapshot.getString("position"));
                     tv_email.setText(documentSnapshot.getString("Email"));
                     tv_address.setText(documentSnapshot.getString("Address"));
                     tv_city.setText(documentSnapshot.getString("city"));

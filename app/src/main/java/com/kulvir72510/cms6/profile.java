@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.MenuItem;
@@ -27,11 +28,14 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
 import com.squareup.picasso.Picasso;
 
 import javax.annotation.Nullable;
@@ -39,10 +43,15 @@ import javax.annotation.Nullable;
 public class profile extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     Button btn_logout,gbtn_logout;
+    DatabaseReference databaseReference;
     FirebaseFirestore fStore;
     String userId;
+    Uri imageUri;
+    String myUrl= "";
+    StorageTask uploadTask;
+    StorageReference storageProfileReference;
     FirebaseAuth fAuth;
-    TextView tv_email, tv_city, tv_address,tv_phone,tv_name;
+    TextView tv_email, tv_city, tv_address,tv_phone,tv_name,tv_pos;
     TextView gtv_email, gtv_city, gtv_address,gtv_phone,gtv_name;
     private GoogleApiClient googleApiClient;
     private GoogleSignInOptions gso;
@@ -82,6 +91,7 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
         tv_name = findViewById(R.id.tv_name);
         img_dp = findViewById(R.id.img_dp);
         scroll = findViewById(R.id.scroll);
+        tv_pos=findViewById(R.id.tv_pos);
        // G_scroll = findViewById(R.id.G_scroll);
         fStore=FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
@@ -124,6 +134,7 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
                 if (documentSnapshot.exists()){
                     String p = String.valueOf(documentSnapshot.getLong("Phone"));
                     tv_name.setText("Hello! "+documentSnapshot.getString("Full_Name"));
+                    tv_pos.setText(documentSnapshot.getString("position"));
                     tv_email.setText(documentSnapshot.getString("Email"));
                     tv_address.setText(documentSnapshot.getString("Address"));
                     tv_city.setText(documentSnapshot.getString("city"));
