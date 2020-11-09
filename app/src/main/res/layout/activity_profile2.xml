@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:clickable="true"
-                android:src="@drawable/car"
+                android:src="@drawable/backcar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

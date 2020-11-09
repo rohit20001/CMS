@@ -170,6 +170,7 @@ public class Register extends AppCompatActivity {
                             user.put("Address",address);
                             user.put("city",city);
                             user.put("position",position);
+                            user.put("imageUri","");
                             if (rbtn_male.isChecked()){
                                 user.put("Gender",m);
                             }
@@ -179,7 +180,7 @@ public class Register extends AppCompatActivity {
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Log.d(TAG,"user profile created successfully"+userId);
+                                    Log.d(TAG, "user profile created successfully" + userId);
                                 }
                             });
                             startActivity(new Intent(getApplicationContext(),home3.class));

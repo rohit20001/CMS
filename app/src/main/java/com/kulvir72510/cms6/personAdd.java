@@ -21,19 +21,22 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.kulvir72510.cms6.MainActivity.userId;
+
 public class personAdd extends AppCompatActivity {
 
     EditText et_name,et_email_id,et_phone,et_address,et_city,et_password_family;
     RadioButton rbtn_male,rbtn_female,rbtn_monitor,rbtn_admin;
     Button btn_save;
-    FirebaseAuth fAuth;
-    FirebaseFirestore fStore;
+    FirebaseAuth fAuth = FirebaseAuth.getInstance();
+    FirebaseFirestore fStore=FirebaseFirestore.getInstance();
     String userId2;
     private static final String TAG ="TAG" ;
 
@@ -54,8 +57,8 @@ public class personAdd extends AppCompatActivity {
         rbtn_admin=findViewById(R.id.rbtn_admin);
         rbtn_monitor=findViewById(R.id.rbtn_monitor);
         btn_save=findViewById(R.id.btn_save);
-        fAuth = FirebaseAuth.getInstance();
-        fStore=FirebaseFirestore.getInstance();
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -127,14 +130,18 @@ public class personAdd extends AppCompatActivity {
 
                 //register the user in firebase
                 if (rbtn_male.isChecked() || rbtn_female.isChecked()){
+
                     fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
-                                Toast.makeText(personAdd.this,"User Created",Toast.LENGTH_LONG).show();
-                                System.out.println(userId2);
+                                Toast.makeText(personAdd.this,"New User Created",Toast.LENGTH_LONG).show();
+                                System.out.println(userId);
                                 userId2 = fAuth.getUid();
                                 System.out.println(userId2);
+                                System.out.println(userId);
+
+
 
                                 DocumentReference documentReference= fStore.collection("users").document(userId2);
                                 Map<String,Object> user= new HashMap<>();
@@ -160,11 +167,12 @@ public class personAdd extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Log.d(TAG,"user profile created successfully"+userId2);
+                                        //FirebaseUser x = fAuth.getUid().equals(userId);
+                                                //System.out.println(x.getEmail());
                                     }
                                 });
 
-                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                                finish();
+
                             }else {
                                 Toast.makeText(personAdd.this,"Error"+task.getException().getMessage(),Toast.LENGTH_LONG).show();
 

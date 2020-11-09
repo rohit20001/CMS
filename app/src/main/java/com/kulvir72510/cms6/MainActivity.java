@@ -65,11 +65,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                     if (documentSnapshot.exists()){
-                        position = documentSnapshot.getString("Full_Name");
-                        System.out.println(position);
+                        position = documentSnapshot.getString("position");
                         Toast.makeText(MainActivity.this,"User Logged in successfully",Toast.LENGTH_LONG).show();
 
-
+                        System.out.println(position);
                         if (position.equals("Admin")){
 
                             startActivity(new Intent(getApplicationContext(),home.class));

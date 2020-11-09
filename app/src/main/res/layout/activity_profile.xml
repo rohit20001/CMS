@@ -26,18 +26,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:clickable="true"
-                android:src="@drawable/car"
+                android:src="@drawable/backcar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_dp"
                 android:layout_width="227dp"
                 android:layout_height="160dp"
                 android:background="@drawable/circle"
+                android:clickable="true"
                 android:src="@drawable/ic_persondetail"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -50,6 +51,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/circle"
+                android:clickable="true"
                 android:src="@drawable/camera"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

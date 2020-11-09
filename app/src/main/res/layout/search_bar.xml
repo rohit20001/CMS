@@ -24,7 +24,9 @@
             android:layout_marginRight="10dp"
             android:background="#FFFFFF"
             android:gravity="center"
-            android:queryHint="Search Here...." />
+            android:queryHint="Search Here...."
+            android:clickable="true"
+            />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
