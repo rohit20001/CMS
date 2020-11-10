@@ -5,16 +5,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class add extends AppCompatActivity {
 
     EditText model_name,gst,road_price,color,price;
     Button btn_save;
+    FirebaseAuth fAuth = FirebaseAuth.getInstance();
+    FirebaseFirestore fStore=FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +63,47 @@ public class add extends AppCompatActivity {
                     overridePendingTransition(0, 0);
                 }
                 return true;
+            }
+        });
+        btn_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String modelName = model_name.getText().toString().trim();
+                final String col = color.getText().toString().trim();
+                final long pri = Long.parseLong(price.getText().toString().trim());
+                final int g = Integer.parseInt(gst.getText().toString().trim());
+                final String o = road_price.getText().toString();
+
+                if (TextUtils.isEmpty(modelName)){
+                    model_name.setError("email is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(col)){
+                    color.setError("password is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(o)){
+                    road_price.setError("password is required");
+                    return;
+                }
+
+
+
+                Map<String, Object> docData = new HashMap<>();
+                docData.put("model_name", modelName);
+                docData.put("color", col);
+                docData.put("price", pri);
+                docData.put("gst",g);
+                docData.put("other", o);
+                docData.put("imageUri","");
+
+// Add a new document (asynchronously) in collection "cities" with id "LA"
+                fStore.collection("Models").add(docData);
+                Toast.makeText(add.this,"Car added successfully",Toast.LENGTH_LONG).show();
+
+// ...
+// future.get() blocks on response
+
             }
         });
     }
