@@ -191,6 +191,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
+                android:clickable="true"
                 android:contentDescription="TODO"
                 android:src="@drawable/car"
                 app:layout_constraintBottom_toBottomOf="@+id/et_address"
