@@ -20,7 +20,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder> {
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_layout,viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.post_view,viewGroup, false);
         return new Viewholder(view);
     }
 
@@ -46,9 +46,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder> {
         public Viewholder(@NonNull View itemView){
             super(itemView);
 
-            imageView=itemView.findViewById(R.id.imageView7);
-            title=itemView.findViewById(R.id.textTitle);
-            body=itemView.findViewById(R.id.textBody);
+            imageView=itemView.findViewById(R.id.imageView);
+            title=itemView.findViewById(R.id.textView);
+            body=itemView.findViewById(R.id.textView2);
         }
         private void setData(int imageResource,String titleText,String bodyText){
             imageView.setImageResource(imageResource);
