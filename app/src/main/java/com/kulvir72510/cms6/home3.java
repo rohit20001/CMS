@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -23,6 +26,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 public class home3 extends AppCompatActivity {
@@ -34,7 +38,10 @@ public class home3 extends AppCompatActivity {
     private CollectionReference reff = fStore.collection("users");
     String[] array;
     int i=0;
-    private DocumentReference dreff = fStore.collection("users").document(userId);
+    AutoCompleteTextView first;
+    String HoldAutocompletetextview;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +49,8 @@ public class home3 extends AppCompatActivity {
         setContentView(R.layout.activity_home3);
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation3);
         bottomNavigationView.setSelectedItemId(R.id.ic_home);
+        first = findViewById(R.id.first);
+        final ArrayList<String> mylist = new ArrayList<String>();
 
         fAuth=FirebaseAuth.getInstance();
         reff.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -50,10 +59,12 @@ public class home3 extends AppCompatActivity {
                 for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
                     String name=documentSnapshot.getString("Full_Name");
                     System.out.println(name);
+                    mylist.add(name);
 
 
                 }
                 System.out.println("fetched all data success");
+                System.out.println(mylist);
 
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -63,6 +74,7 @@ public class home3 extends AppCompatActivity {
 
             }
         });
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -82,6 +94,11 @@ public class home3 extends AppCompatActivity {
                 return true;
             }
         });
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.list_view,  mylist);
+        first.setThreshold(1);
+        first.setAdapter(adapter);
+        HoldAutocompletetextview = first.getText().toString();
+
 
 
 
