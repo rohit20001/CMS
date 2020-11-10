@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".add2">
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="720dp"
+        android:layout_height="match_parent"
         android:background="@drawable/backgroundcolor">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             tools:context=".AddFamily">
 
             <ImageView
@@ -103,8 +103,8 @@
                 android:background="@drawable/rectangle"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="address"
-                android:inputType="textPersonName"
+                android:hint="GST in %"
+                android:inputType="phone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.571"
@@ -121,7 +121,7 @@
                 android:background="@drawable/rectangle"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="@string/et_city"
+                android:hint="Other "
                 android:inputType="textPersonName"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -159,7 +159,7 @@
                 android:ems="10"
                 android:fontFamily="@font/gothambook"
                 android:gravity="center"
-                android:hint="@string/et_phone"
+                android:hint="Selling Price"
                 android:inputType="phone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
