@@ -167,8 +167,10 @@ public class personAdd extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Log.d(TAG,"user profile created successfully"+userId2);
-                                        //FirebaseUser x = fAuth.getUid().equals(userId);
-                                                //System.out.println(x.getEmail());
+                                        fAuth.signOut();
+                                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                        finish();
+
                                     }
                                 });
 
