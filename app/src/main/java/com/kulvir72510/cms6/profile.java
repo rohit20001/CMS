@@ -2,9 +2,11 @@ package com.kulvir72510.cms6;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,6 +18,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -64,7 +67,7 @@ import static com.kulvir72510.cms6.MainActivity.userId;
 public class profile extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     private static final String TAG = "TAG";
-    Button btn_logout,gbtn_logout;
+    Button btn_logout,gbtn_logout,btn_pass;
     DatabaseReference databaseReference;
     FirebaseFirestore fStore=FirebaseFirestore.getInstance();
     FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -128,6 +131,7 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
         scroll = findViewById(R.id.scroll);
         tv_pos=findViewById(R.id.tv_pos);
         imageView8 = findViewById(R.id.imageView8);
+        btn_pass=findViewById(R.id.button2);
        // G_scroll = findViewById(R.id.G_scroll)
 
 
@@ -236,6 +240,42 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getApplicationContext(),"sorry error !!",Toast.LENGTH_LONG).show();
+            }
+        });
+        btn_pass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final EditText resetmail = new EditText(v.getContext());
+                AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
+                passwordResetDialog.setTitle("Reset Password");
+                passwordResetDialog.setMessage("Enter your mail to recieve reset password link");
+                passwordResetDialog.setView(resetmail);
+
+                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String mail = resetmail.getText().toString();
+                        fAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(profile.this, "Reset link has been sent to your mail", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(profile.this, "Error : LinK not Sent" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }
+                });
+                passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                passwordResetDialog.create().show();
             }
         });
 
