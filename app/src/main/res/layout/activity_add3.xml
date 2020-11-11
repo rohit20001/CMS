@@ -103,25 +103,25 @@
                 android:background="@drawable/rectangle"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="GST in %"
+                android:hint="Phone Number"
                 android:inputType="phone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.571"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_phone"
-                app:layout_constraintVertical_bias="0.55" />
+                app:layout_constraintVertical_bias="0.45" />
 
             <EditText
                 android:id="@+id/et_city"
                 android:layout_width="320dp"
-                android:layout_height="43dp"
+                android:layout_height="120dp"
                 android:layout_marginTop="20dp"
                 android:autofillHints=""
                 android:background="@drawable/rectangle"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="Other"
+                android:hint="Description"
                 android:inputType="textPersonName"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -159,7 +159,7 @@
                 android:ems="10"
                 android:fontFamily="@font/gothambook"
                 android:gravity="center"
-                android:hint="Price"
+                android:hint="Selling Price"
                 android:inputType="phone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -207,7 +207,7 @@
         app:itemBackground="@color/colorAccent"
         app:itemTextColor="@drawable/selector"
         app:itemIconTint="@drawable/selector"
-        app:menu="@menu/bottom_navigation3"
+        app:menu="@menu/bottom_navigation2"
         android:layout_alignParentBottom="true"
         app:labelVisibilityMode="labeled"/>
 
