@@ -25,6 +25,7 @@ import com.google.common.net.InternetDomainName;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -155,15 +156,22 @@ public class add extends AppCompatActivity {
                     return;
                 }
 
-
-
-
-
-                docData.put("model_name", modelName);
-                docData.put("color", col);
-                docData.put("price", pri);
-                docData.put("phone",g);
-                docData.put("other", o);
+                userId = fAuth.getCurrentUser().getUid();
+                DocumentReference documentReference=fStore.collection("users").document(userId);
+                documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()){
+                            String z = documentSnapshot.getString("imageUri");
+                            docData.put("model_name", modelName);
+                            docData.put("color", col);
+                            docData.put("price", pri);
+                            docData.put("phone",g);
+                            docData.put("other", o);
+                            docData.put("LoginImageUrl",z);
+                        }
+                    }
+                });
 
 
                 fStore.collection("Models").add(docData);
