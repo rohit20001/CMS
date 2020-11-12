@@ -23,6 +23,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.common.net.InternetDomainName;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -129,8 +131,18 @@ public class add extends AppCompatActivity {
         });
 
         btn_save.setOnClickListener(new View.OnClickListener() {
+            private View view;
+
+            @Override
+            public String toString() {
+                return "$classname{}";
+            }
+
             @Override
             public void onClick(View view) {
+                this.view = view;
+
+
                 final String modelName = model_name.getText().toString().trim();
                 final String col = color.getText().toString().trim();
                 final long pri = Long.parseLong(price.getText().toString().trim());
@@ -155,6 +167,40 @@ public class add extends AppCompatActivity {
                     return;
                 }
 
+                if(!model_name.getText().toString().isEmpty()
+                    && !color.getText().toString().isEmpty()
+                    && !price.getText().toString().isEmpty()
+                    && !gst.getText().toString().isEmpty()
+                    && !road_price.getText().toString().isEmpty()
+                    && imageView6 != null){
+
+                    StorageReference storageReference = FirebaseFirestore.getInstance().getReference().child("imageView6");
+
+                    final StorageReference imageFilePath=storageReference.child(imageUri.getLastPathSegment());
+                    imageFilePath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            imageFilePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    String imageDownloadLink=uri.toString();
+
+                                   Post post=new Post(model_name.getText(),color.getText(),price.getText(),gst.getText(),road_price.getText(),imageDownloadLink);
+                                    
+                                    addPost(post);
+
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+
+                                }
+                            });
+                        }
+                    });
+
+                }
+
 
 
 
@@ -169,13 +215,37 @@ public class add extends AppCompatActivity {
                 fStore.collection("Models").add(docData);
                 fStore.collection("users").document(userId).collection("postUrl").add(docData);
 
+
                 Toast.makeText(add.this,"Car added successfully",Toast.LENGTH_LONG).show();
 
 
 
             }
         });
+
     }
+
+    private void addPost(Post post) {
+
+        FirebaseDatabase database=FirebaseDatabase.getInstance();
+        DatabaseReference myRef= database.getReference("Posts").push();
+        
+        String key= myRef.getKey();
+        post.setPostKey(key);
+        
+        myRef.setValue(post).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                showMessage("Post added Succesfully");
+            }
+        });
+
+    }
+
+    private void showMessage(String post_added_succesfully) {
+    }
+
+
     private void choosePicture() {
         Intent intent = new Intent();
         intent.setType("image/*");
