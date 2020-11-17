@@ -113,6 +113,10 @@ public class profile2 extends AppCompatActivity implements GoogleApiClient.OnCon
                     startActivity(new Intent(profile2.this,home2.class));
                     overridePendingTransition(0, 0);
                 }
+                else if(id==R.id.ic_add2){
+                    startActivity(new Intent(profile2.this,Data.class));
+                    overridePendingTransition(0, 0);
+                }
                 return true;
             }
         });

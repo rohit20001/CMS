@@ -36,6 +36,10 @@ public class home2 extends AppCompatActivity {
                     startActivity(new Intent(home2.this,profile2.class));
                     overridePendingTransition(0, 0);
                 }
+                else if(id==R.id.ic_add2){
+                    startActivity(new Intent(home2.this,Data.class));
+                    overridePendingTransition(0, 0);
+                }
                 return true;
             }
         });
