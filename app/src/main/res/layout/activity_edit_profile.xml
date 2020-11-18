@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".EditProfile">
+
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="121dp"
+        android:layout_height="37dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginBottom="257dp"
+        android:text="@string/save" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="121dp"
+        android:layout_height="37dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginBottom="257dp"
+        android:text="BACK" />
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="320dp"
+        android:layout_height="38dp"
+        android:layout_below="@+id/etEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:hint="@string/name"
+        android:paddingLeft="20dp"
+        android:fontFamily="@font/gothambook"
+        android:gravity="left|center_vertical"
+        android:inputType="textPersonName"
+        tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+    <EditText
+        android:id="@+id/etPhone"
+        android:layout_width="320dp"
+        android:layout_height="38dp"
+        android:layout_below="@+id/etName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/border"
+        android:fontFamily="@font/gothambook"
+        android:gravity="left|center_vertical"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:hint="@string/phone"
+        android:paddingLeft="20dp"
+        android:inputType="phone"
+        tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+    <EditText
+        android:id="@+id/etAddress"
+        android:layout_width="320dp"
+        android:layout_height="38dp"
+        android:layout_below="@+id/etPhone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/border"
+        android:fontFamily="@font/gothambook"
+        android:gravity="left|center_vertical"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:hint="@string/address"
+        android:paddingLeft="20dp"
+        android:inputType="textPostalAddress"
+        tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+    <EditText
+        android:id="@+id/etCity"
+        android:layout_width="320dp"
+        android:layout_height="38dp"
+        android:layout_below="@+id/etAddress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="329dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:fontFamily="@font/gothambook"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="20dp"
+        android:hint="@string/city"
+        android:inputType="textPersonName"
+        tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="320dp"
+        android:layout_height="38dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="20dp"
+        android:hint="@string/enter_your_registered_email"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:fontFamily="@font/gothambook"
+        android:gravity="left|center_vertical"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        tools:ignore="RtlHardcoded,RtlSymmetry,TextFields" />
+
+
+</RelativeLayout>

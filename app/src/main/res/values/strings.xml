@@ -49,4 +49,12 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_add">MainActivity</string>
+    <string name="save">Save</string>
+    <string name="city_name">City Name</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="enter_your_registered_email">Enter your registered Email</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="address">Address</string>
+    <string name="city">City</string>
 </resources>
