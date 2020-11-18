@@ -86,7 +86,7 @@ public class add3 extends AppCompatActivity {
                 return true;
             }
         });
-        imageView6.setOnClickListener(new View.OnClickListener() {
+        /*imageView6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 choosePicture();
@@ -214,7 +214,7 @@ public class add3 extends AppCompatActivity {
                 double progressPercent=(100.00 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
                 pd.setMessage("Percentage "+(int) progressPercent + "%");
             }
-        });
+        });*/
 
 
 
