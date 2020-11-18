@@ -38,9 +38,9 @@ import javax.annotation.Nullable;
 
 public class profile2 extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
-    Button btn_logout,gbtn_logout,btnEditProfile;
+    Button btn_logout,gbtn_logout;
     FirebaseFirestore fStore;
-    String userId,Name;
+    String userId;
     FirebaseAuth fAuth;
     TextView tv_email, tv_city, tv_address,tv_phone,tv_name,tv_pos;
     TextView gtv_email, gtv_city, gtv_address,gtv_phone,gtv_name;
@@ -83,7 +83,6 @@ public class profile2 extends AppCompatActivity implements GoogleApiClient.OnCon
         img_dp = findViewById(R.id.img_dp);
         scroll = findViewById(R.id.scroll);
         tv_pos=findViewById(R.id.tv_pos);
-        btnEditProfile = findViewById(R.id.btnEditProfile);
         // G_scroll = findViewById(R.id.G_scroll);
         fStore=FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
@@ -122,7 +121,6 @@ public class profile2 extends AppCompatActivity implements GoogleApiClient.OnCon
                 if (documentSnapshot.exists()){
                     String p = String.valueOf(documentSnapshot.getLong("Phone"));
                     tv_name.setText("Hello! "+documentSnapshot.getString("Full_Name"));
-                    Name = documentSnapshot.getString("Full_Name");
                     tv_pos.setText(documentSnapshot.getString("position"));
                     tv_email.setText(documentSnapshot.getString("Email"));
                     tv_address.setText(documentSnapshot.getString("Address"));
@@ -156,19 +154,6 @@ public class profile2 extends AppCompatActivity implements GoogleApiClient.OnCon
                 finish();
 
 
-
-            }
-        });
-        btnEditProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(v.getContext(),EditProfile.class);
-                i.putExtra("name",Name);
-                i.putExtra("phone",tv_phone.getText());
-                i.putExtra("address",tv_address.getText());
-                i.putExtra("email",tv_email.getText());
-                i.putExtra("city",tv_city.getText());
-                startActivity(i);
 
             }
         });

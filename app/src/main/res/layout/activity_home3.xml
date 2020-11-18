@@ -6,25 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".home3">
 
-    <include
-        layout="@layout/search_bar"
-        />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraint_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#1E1D1C"
-            android:clickable="false"
-            tools:context=".home"/>
-
-
-
-    </ScrollView>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation3"
         android:layout_width="match_parent"
@@ -35,5 +17,14 @@
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/bottom_navigation3"
         app:labelVisibilityMode="labeled"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:scrollbars="vertical" />
 
 </RelativeLayout>

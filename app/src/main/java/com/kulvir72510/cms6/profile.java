@@ -8,8 +8,10 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,26 +22,37 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -51,12 +64,11 @@ import static com.kulvir72510.cms6.MainActivity.userId;
 public class profile extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     private static final String TAG = "TAG";
-    Button btn_logout,gbtn_logout,btnEditProfile;
+    Button btn_logout,gbtn_logout;
     DatabaseReference databaseReference;
     FirebaseFirestore fStore=FirebaseFirestore.getInstance();
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
-    String Name;
     Uri imageUri;
     String myUrl= "";
     StorageTask uploadTask;
@@ -115,7 +127,6 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
         img_dp = findViewById(R.id.img_dp);
         scroll = findViewById(R.id.scroll);
         tv_pos=findViewById(R.id.tv_pos);
-        btnEditProfile = findViewById(R.id.btnEditProfile);
         imageView8 = findViewById(R.id.imageView8);
        // G_scroll = findViewById(R.id.G_scroll)
 
@@ -190,7 +201,6 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
                 if (documentSnapshot.exists()){
                     String p = String.valueOf(documentSnapshot.getLong("Phone"));
                     tv_name.setText("Hello! "+documentSnapshot.getString("Full_Name"));
-                    Name = documentSnapshot.getString("Full_Name");
                     tv_pos.setText(documentSnapshot.getString("position"));
                     tv_email.setText(documentSnapshot.getString("Email"));
                     tv_address.setText(documentSnapshot.getString("Address"));
@@ -226,20 +236,6 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getApplicationContext(),"sorry error !!",Toast.LENGTH_LONG).show();
-            }
-        });
-
-        btnEditProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(v.getContext(),EditProfile.class);
-                i.putExtra("name",Name);
-                i.putExtra("email",tv_email.getText());
-                i.putExtra("phone",tv_phone.getText());
-                i.putExtra("address",tv_address.getText());
-                i.putExtra("city",tv_city.getText());
-                startActivity(i);
-
             }
         });
 

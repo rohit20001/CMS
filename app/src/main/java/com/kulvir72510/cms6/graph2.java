@@ -36,6 +36,11 @@ public class graph2 extends AppCompatActivity {
                     startActivity(new Intent(graph2.this,profile2.class));
                     overridePendingTransition(0, 0);
                 }
+                else if(id==R.id.ic_add2){
+                    startActivity(new Intent(graph2.this,Data.class));
+                    overridePendingTransition(0, 0);
+                }
+
                 return true;
             }
         });
