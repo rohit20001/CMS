@@ -1,5 +1,6 @@
 package com.kulvir72510.cms6;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,48 +13,49 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder> {
-    private List<ModelClass> modelClassList;
-    public Adapter(List<ModelClass> modelClassList){
-        this.modelClassList=modelClassList;
+    private Context mContext;
+    private List<ModelClass> mUploads;
+
+    public Adapter(Context context, List<ModelClass> uploads) {
+        mContext = context;
+        mUploads=uploads;
     }
 
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.post_view,viewGroup, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.post_view,viewGroup, false);
         return new Viewholder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Viewholder viewholder, int position) {
-        int resource=modelClassList.get(position).getImageIcon();
-        String title=modelClassList.get(position).getTitle();
-        String body=modelClassList.get(position).getBody();
-        viewholder.setData(resource,title,body);
+    public void onBindViewHolder(@NonNull Viewholder holder, int position) {
+        ModelClass UploadCurreent=mUploads.get(position);
+        holder.model_name.setText(UploadCurreent.getModel_name());
+        holder.color.setText(UploadCurreent.getColor());
+        holder.price.setText(UploadCurreent.getPrice());
+        holder.phone.setText(UploadCurreent.getPhone());
+        holder.other.setText(UploadCurreent.getOther());
 
     }
 
     @Override
     public int getItemCount() {
-        return modelClassList.size();
+
+        return mUploads.size();
     }
 
-    class  Viewholder extends RecyclerView.ViewHolder{
-        private ImageView imageView;
-        private TextView title;
-        private TextView body;
+    public class  Viewholder extends RecyclerView.ViewHolder{
+        private TextView model_name,color,price,phone,other;
 
         public Viewholder(@NonNull View itemView){
             super(itemView);
+            model_name=itemView.findViewById(R.id.model_name);
+            price=itemView.findViewById(R.id.price);
+            color=itemView.findViewById(R.id.color);
+            phone=itemView.findViewById(R.id.phone);
+            other=itemView.findViewById(R.id.other);
 
-            imageView=itemView.findViewById(R.id.imageView);
-            title=itemView.findViewById(R.id.textView);
-            body=itemView.findViewById(R.id.textView2);
-        }
-        private void setData(int imageResource,String titleText,String bodyText){
-            imageView.setImageResource(imageResource);
-            title.setText((titleText));
-            body.setText(bodyText);
         }
     }
 }
