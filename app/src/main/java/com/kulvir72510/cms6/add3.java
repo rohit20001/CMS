@@ -16,11 +16,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -86,6 +90,55 @@ public class add3 extends AppCompatActivity {
                 return true;
             }
         });
+        btn_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String mModel = model_name.getText().toString().trim();
+                final String mColor = color.getText().toString().trim();
+                final String mPrice = price.getText().toString().trim();
+                final String mRoad = road_price.getText().toString().trim();
+                final String mGst = gst.getText().toString().trim();
+
+                if (TextUtils.isEmpty(mModel)) {
+                    model_name.setError("email is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(mColor)) {
+                    color.setError("email is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(mPrice)) {
+                    price.setError("email is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(mRoad)) {
+                    road_price.setError("email is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(mGst)) {
+                    gst.setError("email is required");
+                    return;
+                }
+                DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Cars");
+                HashMap<String, Object> hashMap=new HashMap<>();
+                hashMap.put("Model",model_name.getText().toString());
+                hashMap.put("Color",color.getText().toString());
+                hashMap.put("Price",price.getText().toString());
+                hashMap.put("Gst",gst.getText().toString());
+                hashMap.put("RoadPrice",road_price.getText().toString());
+                reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(add3.this,"Car Added.",Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(add3.this,"error",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+
         /*imageView6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -66,7 +66,7 @@ public class home3 extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mUploads=new ArrayList<>();
-        mDatabaseRef= FirebaseDatabase.getInstance().getReference("Models");
+        mDatabaseRef= FirebaseDatabase.getInstance().getReference("Cars");
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
