@@ -110,7 +110,6 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(),"sorry error !!",Toast.LENGTH_LONG).show();
             }
         });
 

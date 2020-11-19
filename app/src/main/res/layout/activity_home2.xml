@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".home2">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraint_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#1E1D1C"
-            android:clickable="false"
-            tools:context=".home"/>
-
-
-
-    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation2"
@@ -32,5 +17,28 @@
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/bottom_navigation2"
         app:labelVisibilityMode="labeled"/>
+    <TextView
+        android:id="@+id/model_name"
+        android:layout_width="423dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/gothambold"
+        android:text="Car Management System"
+        android:gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="50dp"
+        android:scrollbars="vertical" />
+
 
 </RelativeLayout>
