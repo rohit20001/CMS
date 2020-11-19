@@ -113,6 +113,7 @@ public class profile3 extends AppCompatActivity implements GoogleApiClient.OnCon
         tv_name = findViewById(R.id.tv_name);
         img_dp = findViewById(R.id.img_dp);
         scroll = findViewById(R.id.scroll);
+        btn_pass = findViewById(R.id.button2);
         // G_scroll = findViewById(R.id.G_scroll);
         imageView8 = findViewById(R.id.imageView8);
         fStore=FirebaseFirestore.getInstance();

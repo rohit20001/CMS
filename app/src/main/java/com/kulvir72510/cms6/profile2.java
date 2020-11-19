@@ -86,6 +86,7 @@ public class profile2 extends AppCompatActivity implements GoogleApiClient.OnCon
         img_dp = findViewById(R.id.img_dp);
         scroll = findViewById(R.id.scroll);
         tv_pos=findViewById(R.id.tv_pos);
+        btn_pass = findViewById(R.id.button2);
         // G_scroll = findViewById(R.id.G_scroll);
         fStore=FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
