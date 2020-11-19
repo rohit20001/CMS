@@ -1,10 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Data">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backgroundcolor">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            tools:context=".Register">
+
+            <ImageView
+                android:id="@+id/img_cms_family"
+                android:layout_width="307dp"
+                android:layout_height="98dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/circlelogo"
+                android:contentDescription="@string/todo" />
+
+            <TextView
+                android:id="@+id/tv_add_in_family_of"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/gothambold"
+                android:text="@string/tv_add_in_family_of"
+                android:textColor="#FFFFFF"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_cms_family"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tv_cms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gothambold"
+                android:text="@string/tv_cms"
+                android:textColor="#FFFFFF"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_add_in_family_of"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="43dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/img_cms_family"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/abc_vector_test"
+                android:focusable="true"
+                android:contentDescription="@string/todo" />
+
+            <EditText
+                android:id="@+id/tv_email"
+                android:layout_width="320dp"
+                android:layout_height="43dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:autofillHints=""
+                android:background="@drawable/rectangle"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Full name"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.444"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cms"
+                app:layout_constraintVertical_bias="0.039" />
+
+            <EditText
+                android:id="@+id/et_address"
+                android:layout_width="320dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="20dp"
+                android:autofillHints=""
+                android:background="@drawable/rectangle"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/et_address1"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_phone"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/et_city"
+                android:layout_width="320dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rectangle"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Year"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_address"
+                app:layout_constraintVertical_bias="0.0"
+                android:autofillHints="" />
+
+            <EditText
+                android:id="@+id/et_email_id"
+                android:layout_width="320dp"
+                android:layout_height="43dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rectangle"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/et_email_id"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_email"
+                app:layout_constraintVertical_bias="0.0"
+                android:autofillHints="" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_email_id"
+                app:layout_constraintVertical_bias="0.0">
+
+
+                <RadioButton
+                    android:id="@+id/rbtn_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:fontFamily="@font/gothambold"
+                    android:text="@string/rbtn_male"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/gothambold"
+                    android:text="@string/rbtn_female"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="320dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rectangle"
+                android:ems="10"
+                android:fontFamily="@font/gothambook"
+                android:gravity="center"
+                android:hint="@string/et_phone"
+                android:inputType="phone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup1"
+                app:layout_constraintVertical_bias="0.0"
+                android:autofillHints="" />
+
+            <EditText
+                android:id="@+id/et_password_family"
+                android:layout_width="320dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rectangle"
+                android:ems="10"
+                android:fontFamily="@font/gothambook"
+                android:gravity="center"
+                android:hint="Model Name"
+                android:inputType="textPersonName"
+                android:textColor="#0A0A0A"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_city"
+                app:layout_constraintVertical_bias="0.0"
+                android:autofillHints="" />
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="60dp"
+                android:background="@drawable/button"
+                android:fontFamily="@font/gothambold"
+                android:text="Register"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar2"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_password_family"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation2"
@@ -14,9 +262,6 @@
         app:itemBackground="@color/colorAccent"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
-        app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_navigation2"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="670dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:labelVisibilityMode="labeled" />
+</RelativeLayout>

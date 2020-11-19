@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -42,11 +44,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -56,7 +61,9 @@ import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -86,6 +93,10 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
     ImageView imageView8;
     ScrollView scroll;
     ScrollView G_scroll;
+    private RecyclerView recyclerView;
+    private Adapter PostAdaptar;
+    private DatabaseReference mDatabaseRef;
+    private List<ModelClass> mUploads;
 
     @Override
     protected void onStart() {
@@ -295,6 +306,36 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
                     }
                 });
                 passwordResetDialog.create().show();
+            }
+        });
+
+
+        recyclerView=findViewById(R.id.recyclerView2);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mUploads=new ArrayList<ModelClass>();
+        CollectionReference reff = fStore.collection("users").document(userId).collection("postUrl");
+        reff.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+                    String model=documentSnapshot.getString("Model");
+                    String color = documentSnapshot.getString("Color");
+                    String gst = documentSnapshot.getString("Gst");
+                    String price = documentSnapshot.getString("Price");
+                    String rp = documentSnapshot.getString("RoadPrice");
+                    mUploads.add(new ModelClass(model,color,gst,price,rp));
+                }
+                PostAdaptar=new Adapter(profile.this,mUploads);
+                recyclerView.setAdapter(PostAdaptar);
+                System.out.println("fetched all data success");
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "Error getting data!!!", Toast.LENGTH_LONG).show();
+
             }
         });
 

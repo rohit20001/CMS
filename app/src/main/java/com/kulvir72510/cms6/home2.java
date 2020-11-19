@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -21,6 +23,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.kulvir72510.cms6.MainActivity.userId;
 
 public class home2 extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -76,9 +80,6 @@ public class home2 extends AppCompatActivity {
                     String price = documentSnapshot.getString("Price");
                     String rp = documentSnapshot.getString("RoadPrice");
                     mUploads.add(new ModelClass(model,color,gst,price,rp));
-
-
-
                 }
                 PostAdaptar=new Adapter(home2.this,mUploads);
                 recyclerView.setAdapter(PostAdaptar);
@@ -92,6 +93,5 @@ public class home2 extends AppCompatActivity {
 
             }
         });
-
     }
 }

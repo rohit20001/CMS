@@ -16,6 +16,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="400dp"
         android:layout_marginBottom="257dp"
+        android:background="@drawable/button"
         android:text="@string/save" />
 
     <Button
@@ -27,7 +28,8 @@
         android:layout_marginStart="220dp"
         android:layout_marginTop="400dp"
         android:layout_marginBottom="257dp"
-        android:text="BACK" />
+        android:background="@drawable/button"
+        android:text="CANCEL" />
 
     <EditText
         android:id="@+id/etName"

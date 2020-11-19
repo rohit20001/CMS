@@ -29,6 +29,7 @@ public class home extends AppCompatActivity {
     FirebaseFirestore fStore=FirebaseFirestore.getInstance();
     private List<ModelClass> mUploads;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +90,7 @@ public class home extends AppCompatActivity {
 
             }
         });
+
 
 
     }

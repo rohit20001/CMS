@@ -19,23 +19,25 @@
         <activity android:name=".profile3" />
         <activity android:name=".home3" />
         <activity android:name=".profile2" />
+        <activity android:name=".Data" />
         <activity android:name=".add2" />
         <activity android:name=".graph2" />
         <activity android:name=".home2" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".MainActivity"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".profile" />
         <activity android:name=".graph" />
         <activity android:name=".personAdd" />
         <activity
             android:name=".add"
             android:label="@string/title_activity_add" />
-        <activity android:name=".Splash" />
+        <activity android:name=".Splash" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Register" />
         <activity android:name=".home" />
     </application>

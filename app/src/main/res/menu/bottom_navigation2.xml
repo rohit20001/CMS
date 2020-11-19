@@ -20,9 +20,9 @@
         android:enabled="true"/>
     <item
         android:id="@+id/ic_add2"
+        android:enabled="true"
         android:icon="@drawable/ic_add"
-        android:title="add2"
-        android:enabled="true"/>
+        android:title="Sell Details" />
 
     <item
         android:id="@+id/ic_profile"

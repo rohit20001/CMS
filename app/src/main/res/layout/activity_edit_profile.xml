@@ -16,6 +16,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="400dp"
         android:layout_marginBottom="257dp"
+        android:background="@drawable/button"
         android:text="@string/save" />
 
     <Button
@@ -27,7 +28,8 @@
         android:layout_marginStart="220dp"
         android:layout_marginTop="400dp"
         android:layout_marginBottom="257dp"
-        android:text="BACK" />
+        android:background="@drawable/button"
+        android:text="CANCEL" />
 
     <EditText
         android:id="@+id/etName"
@@ -41,11 +43,11 @@
         android:layout_marginRight="20dp"
         android:background="@drawable/border"
         android:ems="10"
-        android:hint="@string/name"
-        android:paddingLeft="20dp"
         android:fontFamily="@font/gothambook"
         android:gravity="left|center_vertical"
+        android:hint="@string/name"
         android:inputType="textPersonName"
+        android:paddingLeft="20dp"
         tools:ignore="RtlHardcoded,RtlSymmetry" />
 
     <EditText
@@ -54,17 +56,17 @@
         android:layout_height="38dp"
         android:layout_below="@+id/etName"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="20dp"
         android:layout_marginStart="10dp"
-        android:background="@drawable/border"
-        android:fontFamily="@font/gothambook"
-        android:gravity="left|center_vertical"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
+        android:background="@drawable/border"
         android:ems="10"
+        android:fontFamily="@font/gothambook"
+        android:gravity="left|center_vertical"
         android:hint="@string/phone"
-        android:paddingLeft="20dp"
         android:inputType="phone"
+        android:paddingLeft="20dp"
         tools:ignore="RtlHardcoded,RtlSymmetry" />
 
     <EditText
@@ -73,17 +75,17 @@
         android:layout_height="38dp"
         android:layout_below="@+id/etPhone"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="20dp"
         android:layout_marginStart="10dp"
-        android:background="@drawable/border"
-        android:fontFamily="@font/gothambook"
-        android:gravity="left|center_vertical"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
+        android:background="@drawable/border"
         android:ems="10"
+        android:fontFamily="@font/gothambook"
+        android:gravity="left|center_vertical"
         android:hint="@string/address"
-        android:paddingLeft="20dp"
         android:inputType="textPostalAddress"
+        android:paddingLeft="20dp"
         tools:ignore="RtlHardcoded,RtlSymmetry" />
 
     <EditText
@@ -101,9 +103,9 @@
         android:ems="10"
         android:fontFamily="@font/gothambook"
         android:gravity="left|center_vertical"
-        android:paddingLeft="20dp"
         android:hint="@string/city"
         android:inputType="textPersonName"
+        android:paddingLeft="20dp"
         tools:ignore="RtlHardcoded,RtlSymmetry" />
 
     <EditText
@@ -114,13 +116,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="20dp"
-        android:hint="@string/enter_your_registered_email"
         android:layout_marginTop="50dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/border"
         android:ems="10"
         android:fontFamily="@font/gothambook"
         android:gravity="left|center_vertical"
+        android:hint="@string/enter_your_registered_email"
         android:inputType="textPersonName"
         android:paddingLeft="20dp"
         tools:ignore="RtlHardcoded,RtlSymmetry,TextFields" />

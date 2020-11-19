@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -38,11 +40,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -63,7 +68,6 @@ import static com.kulvir72510.cms6.MainActivity.userId;
 public class profile3 extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     Button btn_logout,gbtn_logout,btn_pass,btnEditProfile;
-    FirebaseFirestore fStore;
     String userId,Name;
     FirebaseAuth fAuth;
     TextView tv_email, tv_city, tv_address,tv_phone,tv_name;
@@ -79,6 +83,11 @@ public class profile3 extends AppCompatActivity implements GoogleApiClient.OnCon
     String TAG;
     private ArrayList<String> mArrayList;
     private Uri imageUri;
+    private RecyclerView recyclerView;
+    private Adapter PostAdaptar;
+    private DatabaseReference mDatabaseRef;
+    FirebaseFirestore fStore=FirebaseFirestore.getInstance();
+    private List<ModelClass> mUploads;
 
 
     @Override
@@ -117,7 +126,6 @@ public class profile3 extends AppCompatActivity implements GoogleApiClient.OnCon
         btn_pass = findViewById(R.id.button2);
         // G_scroll = findViewById(R.id.G_scroll);
         imageView8 = findViewById(R.id.imageView8);
-        fStore=FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleApiClient= new GoogleApiClient.Builder(this).enableAutoManage(this,this)
@@ -276,6 +284,36 @@ public class profile3 extends AppCompatActivity implements GoogleApiClient.OnCon
                 passwordResetDialog.create().show();
             }
         });
+
+        recyclerView=findViewById(R.id.recyclerView2);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mUploads=new ArrayList<ModelClass>();
+        CollectionReference reff = fStore.collection("users").document(userId).collection("postUrl");
+        reff.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+                    String model=documentSnapshot.getString("Model");
+                    String color = documentSnapshot.getString("Color");
+                    String gst = documentSnapshot.getString("Gst");
+                    String price = documentSnapshot.getString("Price");
+                    String rp = documentSnapshot.getString("RoadPrice");
+                    mUploads.add(new ModelClass(model,color,gst,price,rp));
+                }
+                PostAdaptar=new Adapter(profile3.this,mUploads);
+                recyclerView.setAdapter(PostAdaptar);
+                System.out.println("fetched all data success");
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "Error getting data!!!", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
 
 
     }

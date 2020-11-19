@@ -41,7 +41,7 @@ public class add2 extends AppCompatActivity {
     Button btn_save;
     FirebaseFirestore fStore=FirebaseFirestore.getInstance();
     FirebaseStorage storage = FirebaseStorage.getInstance();
-    Map<String, Object> docData=new HashMap<>();;
+    Map<String, Object> hashMap=new HashMap<>();;
 
     private Uri imageUri;
     StorageReference storageReference=storage.getReference();
@@ -52,6 +52,7 @@ public class add2 extends AppCompatActivity {
     long p;
     long G;
     String O;
+
 
 
     @Override
@@ -66,7 +67,7 @@ public class add2 extends AppCompatActivity {
         btn_save = findViewById(R.id.btn_save);
         imageView6 = findViewById(R.id.imageView6);
         img_back = findViewById(R.id.img_back);
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation3);
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation2);
         bottomNavigationView.setSelectedItemId(R.id.ic_add);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -92,32 +93,6 @@ public class add2 extends AppCompatActivity {
                     overridePendingTransition(0, 0);
                 }
                 return true;
-            }
-        });
-        imageView6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                choosePicture();
-            }
-        });
-        CollectionReference reff = fStore.collection("users").document(userId).collection("postUrl");
-        reff.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
-                    String name=documentSnapshot.getString("randomKey");
-                    System.out.println(name);
-
-
-                }
-                System.out.println("fetched all data success");
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(), "Error getting data!!!", Toast.LENGTH_LONG).show();
-
             }
         });
 
@@ -152,15 +127,15 @@ public class add2 extends AppCompatActivity {
 
 
 
-                docData.put("model_name", modelName);
-                docData.put("color", col);
-                docData.put("price", pri);
-                docData.put("phone",g);
-                docData.put("other", o);
+                hashMap.put("Model",model_name.getText().toString());
+                hashMap.put("Color",color.getText().toString());
+                hashMap.put("Price",price.getText().toString());
+                hashMap.put("Gst",gst.getText().toString());
+                hashMap.put("RoadPrice",road_price.getText().toString());
 
 
-                fStore.collection("Models").add(docData);
-                fStore.collection("users").document(userId).collection("postUrl").add(docData);
+                fStore.collection("Models").add(hashMap);
+                fStore.collection("users").document(userId).collection("postUrl").add(hashMap);
 
                 Toast.makeText(add2.this,"Car added successfully",Toast.LENGTH_LONG).show();
 
@@ -168,62 +143,5 @@ public class add2 extends AppCompatActivity {
 
             }
         });
-    }
-    private void choosePicture() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,1);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==1 && resultCode==RESULT_OK && data != null && data.getData()!=null){
-            imageUri= data.getData();
-            imageView6.setImageURI(imageUri);
-            System.out.println(imageUri+"  kulvir 1");
-            uploadPicture();
-
-        }
-    }
-
-    private void uploadPicture() {
-        final ProgressDialog pd = new ProgressDialog(this);
-        pd.setTitle("Uploading Image");
-        pd.show();
-        final String randomKey = UUID.randomUUID().toString();
-
-        final StorageReference riversRef = storageReference.child("carImages/"+randomKey);
-
-
-        riversRef.putFile(imageUri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // Get a URL to the uploaded content
-                        pd.dismiss();
-                        Snackbar.make(findViewById(android.R.id.content),"Image Uploaded",Snackbar.LENGTH_LONG).show();
-                        userId = fAuth.getCurrentUser().getUid();
-
-                        docData.put("carUrl","images/"+randomKey);
-                    }
-
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        pd.dismiss();
-                        Toast.makeText(getApplicationContext(),"Failed to Upload",Toast.LENGTH_LONG).show();
-                    }
-                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                double progressPercent=(100.00 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
-                pd.setMessage("Percentage "+(int) progressPercent + "%");
-            }
-        });
-
-
     }
 }
