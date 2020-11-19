@@ -128,6 +128,7 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
         tv_phone= findViewById(R.id.tv_phone);
         tv_name = findViewById(R.id.tv_name);
         img_dp = findViewById(R.id.img_dp);
+        btn_pass = findViewById(R.id.button2);
         scroll = findViewById(R.id.scroll);
         tv_pos=findViewById(R.id.tv_pos);
         imageView8 = findViewById(R.id.imageView8);
