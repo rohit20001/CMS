@@ -67,11 +67,12 @@ import static com.kulvir72510.cms6.MainActivity.userId;
 public class profile extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     private static final String TAG = "TAG";
-    Button btn_logout,gbtn_logout,btn_pass;
+    Button btn_logout,gbtn_logout,btnEditProfile, btn_pass;
     DatabaseReference databaseReference;
     FirebaseFirestore fStore=FirebaseFirestore.getInstance();
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
+    String Name;
     Uri imageUri;
     String myUrl= "";
     StorageTask uploadTask;
@@ -131,6 +132,7 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
         btn_pass = findViewById(R.id.button2);
         scroll = findViewById(R.id.scroll);
         tv_pos=findViewById(R.id.tv_pos);
+        btnEditProfile = findViewById(R.id.btnEditProfile);
         imageView8 = findViewById(R.id.imageView8);
        // G_scroll = findViewById(R.id.G_scroll)
 
@@ -205,6 +207,7 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
                 if (documentSnapshot.exists()){
                     String p = String.valueOf(documentSnapshot.getLong("Phone"));
                     tv_name.setText("Hello! "+documentSnapshot.getString("Full_Name"));
+                    Name = documentSnapshot.getString("Full_Name");
                     tv_pos.setText(documentSnapshot.getString("position"));
                     tv_email.setText(documentSnapshot.getString("Email"));
                     tv_address.setText(documentSnapshot.getString("Address"));
@@ -242,6 +245,23 @@ public class profile extends AppCompatActivity implements GoogleApiClient.OnConn
                 Toast.makeText(getApplicationContext(),"sorry error !!",Toast.LENGTH_LONG).show();
             }
         });
+
+
+
+        btnEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(),EditProfile.class);
+                i.putExtra("name",Name);
+                i.putExtra("email",tv_email.getText());
+                i.putExtra("phone",tv_phone.getText());
+                i.putExtra("address",tv_address.getText());
+                i.putExtra("city",tv_city.getText());
+                startActivity(i);
+
+            }
+        });
+
         btn_pass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
