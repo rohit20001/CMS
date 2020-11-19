@@ -2,14 +2,32 @@ package com.kulvir72510.cms6;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class home2 extends AppCompatActivity {
+    private RecyclerView recyclerView;
+    private Adapter PostAdaptar;
+    private DatabaseReference mDatabaseRef;
+    FirebaseFirestore fStore=FirebaseFirestore.getInstance();
+    private List<ModelClass> mUploads;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,5 +61,37 @@ public class home2 extends AppCompatActivity {
                 return true;
             }
         });
+        recyclerView=findViewById(R.id.recyclerView2);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mUploads=new ArrayList<ModelClass>();
+        CollectionReference reff = fStore.collection("Models");
+        reff.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+                    String model=documentSnapshot.getString("Model");
+                    String color = documentSnapshot.getString("Color");
+                    String gst = documentSnapshot.getString("Gst");
+                    String price = documentSnapshot.getString("Price");
+                    String rp = documentSnapshot.getString("RoadPrice");
+                    mUploads.add(new ModelClass(model,color,gst,price,rp));
+
+
+
+                }
+                PostAdaptar=new Adapter(home2.this,mUploads);
+                recyclerView.setAdapter(PostAdaptar);
+                System.out.println("fetched all data success");
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "Error getting data!!!", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
     }
 }
