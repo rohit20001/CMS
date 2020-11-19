@@ -45,7 +45,7 @@ public class add3 extends AppCompatActivity {
     Button btn_save;
     FirebaseFirestore fStore=FirebaseFirestore.getInstance();
     FirebaseStorage storage = FirebaseStorage.getInstance();
-    Map<String, Object> docData=new HashMap<>();;
+    Map<String, Object> hashMap=new HashMap<>();;
 
     private Uri imageUri;
     StorageReference storageReference=storage.getReference();
@@ -90,7 +90,76 @@ public class add3 extends AppCompatActivity {
                 return true;
             }
         });
+        /*CollectionReference reff = fStore.collection("users").document(userId).collection("postUrl");
+        reff.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+                    String name=documentSnapshot.getString("randomKey");
+                    System.out.println(name);
+
+
+                }
+                System.out.println("fetched all data success");
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "Error getting data!!!", Toast.LENGTH_LONG).show();
+
+            }
+        });*/
+
         btn_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String modelName = model_name.getText().toString().trim();
+                final String col = color.getText().toString().trim();
+                final long pri = Long.parseLong(price.getText().toString().trim());
+                final long g = Long.parseLong(gst.getText().toString().trim());
+                final String o = road_price.getText().toString();
+                mn = modelName;
+                c = col;
+                p = pri;
+                G = g;
+                O = o;
+
+                if (TextUtils.isEmpty(modelName)){
+                    model_name.setError("email is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(col)){
+                    color.setError("password is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(o)){
+                    road_price.setError("password is required");
+                    return;
+                }
+
+
+
+
+
+                hashMap.put("Model",model_name.getText().toString());
+                hashMap.put("Color",color.getText().toString());
+                hashMap.put("Price",price.getText().toString());
+                hashMap.put("Gst",gst.getText().toString());
+                hashMap.put("RoadPrice",road_price.getText().toString());
+
+
+                fStore.collection("Models").add(hashMap);
+                fStore.collection("users").document(userId).collection("postUrl").add(hashMap);
+
+                Toast.makeText(add3.this,"Car added successfully",Toast.LENGTH_LONG).show();
+
+
+
+            }
+        });
+    }
+        /*btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String mModel = model_name.getText().toString().trim();
@@ -137,7 +206,7 @@ public class add3 extends AppCompatActivity {
                     }
                 });
             }
-        });
+        });*/
 
         /*imageView6.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -271,5 +340,4 @@ public class add3 extends AppCompatActivity {
 
 
 
-    }
 }

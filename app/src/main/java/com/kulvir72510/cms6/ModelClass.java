@@ -1,17 +1,14 @@
 package com.kulvir72510.cms6;
 
 public class ModelClass {
-    String model_name,color,price,phone,other;
+    String model_name,color,price,gst,other;
 
     public ModelClass(String model_name, String color, String price, String phone, String other) {
         this.model_name = model_name;
         this.color = color;
         this.price = price;
-        this.phone = phone;
+        this.gst = phone;
         this.other = other;
-    }
-
-    public ModelClass() {
     }
 
     public String getModel_name() {
@@ -38,12 +35,12 @@ public class ModelClass {
         this.price = price;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getGst() {
+        return gst;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setGst(String phone) {
+        this.gst = gst;
     }
 
     public String getOther() {

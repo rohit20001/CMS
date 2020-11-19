@@ -34,7 +34,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder> {
         holder.model_name.setText(UploadCurreent.getModel_name());
         holder.color.setText(UploadCurreent.getColor());
         holder.price.setText(UploadCurreent.getPrice());
-        holder.phone.setText(UploadCurreent.getPhone());
+        holder.gst.setText(UploadCurreent.getGst());
         holder.other.setText(UploadCurreent.getOther());
 
     }
@@ -46,14 +46,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder> {
     }
 
     public class  Viewholder extends RecyclerView.ViewHolder{
-        private TextView model_name,color,price,phone,other;
+        private TextView model_name,color,price,gst,other;
 
         public Viewholder(@NonNull View itemView){
             super(itemView);
             model_name=itemView.findViewById(R.id.model_name);
             price=itemView.findViewById(R.id.price);
             color=itemView.findViewById(R.id.color);
-            phone=itemView.findViewById(R.id.phone);
+            gst=itemView.findViewById(R.id.gst);
             other=itemView.findViewById(R.id.other);
 
         }

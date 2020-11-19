@@ -39,6 +39,7 @@ public class home3 extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Adapter PostAdaptar;
     private DatabaseReference mDatabaseRef;
+    FirebaseFirestore fStore=FirebaseFirestore.getInstance();
     private List<ModelClass> mUploads;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,15 +66,59 @@ public class home3 extends AppCompatActivity {
         recyclerView=findViewById(R.id.recyclerView2);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mUploads=new ArrayList<>();
-        mDatabaseRef= FirebaseDatabase.getInstance().getReference("Cars");
-        mDatabaseRef.addValueEventListener(new ValueEventListener() {
+        mUploads=new ArrayList<ModelClass>();
+        CollectionReference reff = fStore.collection("Models");
+        reff.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+                    String model=documentSnapshot.getString("Model");
+                    String color = documentSnapshot.getString("Color");
+                    String gst = documentSnapshot.getString("Gst");
+                    String price = documentSnapshot.getString("Price");
+                    String rp = documentSnapshot.getString("RoadPrice");
+                    mUploads.add(new ModelClass(model,color,gst,price,rp));
+
+
+
+                }
+                PostAdaptar=new Adapter(home3.this,mUploads);
+                recyclerView.setAdapter(PostAdaptar);
+                System.out.println("fetched all data success");
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "Error getting data!!!", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        //mDatabaseRef= FirebaseDatabase.getInstance().getReference("Cars");
+        /*mUploads.add(new ModelClass("model","color","gst","price","rp"));
+        mUploads.add(new ModelClass("model","color","gst","price","rp"));
+        PostAdaptar=new Adapter(home3.this,mUploads);
+        recyclerView.setAdapter(PostAdaptar);*/
+
+        /*mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot postSnapshhot : dataSnapshot.getChildren()){
-                    ModelClass modelClass=postSnapshhot.getValue(ModelClass.class);
+                for (DataSnapshot x:dataSnapshot.getChildren()){
+
+                    ModelClass modelClass=x.getValue(ModelClass.class);
                     mUploads.add(modelClass);
+
+                    String model = x.child("Model").getValue(String.class);
+                    String color = x.child("Color").getValue(String.class);
+                    String gst = x.child("Gst").getValue(String.class);
+                    String price = x.child("Price").getValue(String.class);
+                    String rp = x.child("RoadPrice").getValue(String.class);
+                    mUploads.add(new ModelClass(model,color,gst,price,rp));
                 }
+
+
+
                 PostAdaptar=new Adapter(home3.this,mUploads);
                 recyclerView.setAdapter(PostAdaptar);
             }
@@ -82,7 +127,7 @@ public class home3 extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
              Toast.makeText(home3.this, error.getMessage(),Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
     }
 }
