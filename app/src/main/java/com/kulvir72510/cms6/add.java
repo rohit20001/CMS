@@ -58,6 +58,7 @@ public class add extends AppCompatActivity {
     long p;
     long G;
     String O;
+    String x;
 
 
     @Override
@@ -101,6 +102,22 @@ public class add extends AppCompatActivity {
             }
         });
 
+        if (fAuth.getCurrentUser()!=null) {
+            DocumentReference documentReference = fStore.collection("users").document(userId);
+            documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if (documentSnapshot.exists()) {
+                        x = String.valueOf(documentSnapshot.getLong("Phone"));
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                }
+            });
+        }
+
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,6 +150,8 @@ public class add extends AppCompatActivity {
                 hashMap.put("Price",price.getText().toString());
                 hashMap.put("Gst",gst.getText().toString());
                 hashMap.put("RoadPrice",road_price.getText().toString());
+                hashMap.put("publisherEmail",fAuth.getCurrentUser().getEmail());
+                hashMap.put("publisherPhone",x);
 
 
                 fStore.collection("Models").add(hashMap);

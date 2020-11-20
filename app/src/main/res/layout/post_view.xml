@@ -12,152 +12,176 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="#8FC1B2B2"
         app:cardCornerRadius="25dp"
         app:cardElevation="5dp"
         app:cardUseCompatPadding="false">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout android:orientation="horizontal"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content">
-
-            <TextView
-                android:id="@+id/textView6"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Car Model :"
-                android:textSize="25sp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/colorPrimary"
-                android:layout_marginTop="8dp"/>
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/model_name"
-                android:layout_width="423dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="8dp"
-                android:text="Car Model Name"
-                android:gravity="left"
-                android:textColor="@color/colorPrimary"
-                android:textSize="25sp" />
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/gothambold"
+                    android:text="Car Model :"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/model_name"
+                    android:layout_width="423dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/gothambold"
+                    android:gravity="left"
+                    android:text="Car Model Name"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp" />
             </LinearLayout>
-            <LinearLayout android:orientation="horizontal"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content">
 
-            <TextView
-                android:id="@+id/textView2"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Color :"
-                android:layout_marginLeft="5dp"
-                android:textSize="15sp"
-                android:textColor="@color/colorPrimary"
-                android:layout_marginTop="8dp"/>
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/color"
-                android:layout_width="281dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="left"
-                android:text="Color"
-                android:textColor="@color/colorPrimary"
-                android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/gothambold"
+                    android:text="Color :"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/color"
+                    android:layout_width="281dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/gothambold"
+                    android:gravity="left"
+                    android:text="Color"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp" />
             </LinearLayout>
-        <LinearLayout android:orientation="horizontal"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content">
-            <TextView
-                android:id="@+id/textView3"
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Gst :"
-                android:textSize="15sp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/colorPrimary"
-                android:layout_marginTop="8dp"/>
-            <TextView
-                android:layout_width="281dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="20dp"
-                android:text="Gst"
-                android:layout_gravity="center"
-                android:textSize="15sp"
-                android:textColor="@color/colorPrimary"
-                android:gravity="left"
-                android:id="@+id/price"
-                android:layout_marginBottom="8dp"/>
-        </LinearLayout>
-             <LinearLayout android:orientation="horizontal"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content">
-            <TextView
-                android:id="@+id/textView4"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/gothambold"
+                    android:text="Gst :"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="281dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/gothambold"
+                    android:gravity="left"
+                    android:text="Gst"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Price :"
-                android:layout_marginLeft="5dp"
-                android:textSize="15sp"
-                android:textColor="@color/colorPrimary"
-                android:layout_marginTop="8dp"/>
+                android:orientation="horizontal">
 
-                 <TextView
-                     android:id="@+id/gst"
-                     android:layout_width="293dp"
-                     android:layout_height="wrap_content"
-                     android:layout_gravity="center"
-                     android:layout_marginLeft="30dp"
-                     android:layout_marginTop="8dp"
-                     android:layout_marginRight="20dp"
-                     android:layout_marginBottom="8dp"
-                     android:gravity="left"
-                     android:text="Price"
-                     android:textColor="@color/colorPrimary"
-                     android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/gothambold"
+                    android:text="Price :"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp" />
 
-             </LinearLayout>
-              <LinearLayout android:orientation="horizontal"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content">
-            <TextView
-                android:id="@+id/textView5"
+                <TextView
+                    android:id="@+id/gst"
+                    android:layout_width="293dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/gothambold"
+                    android:gravity="left"
+                    android:text="Price"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Road Price :"
-                android:textSize="15sp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/colorPrimary"
-                android:layout_marginTop="8dp"/>
+                android:orientation="horizontal">
 
-                  <TextView
-                      android:id="@+id/other"
-                      android:layout_width="237dp"
-                      android:layout_height="wrap_content"
-                      android:layout_gravity="center"
-                      android:layout_marginLeft="30dp"
-                      android:layout_marginTop="8dp"
-                      android:layout_marginRight="20dp"
-                      android:layout_marginBottom="8dp"
-                      android:gravity="left"
-                      android:text="Car Description"
-                      android:textColor="@color/colorPrimary"
-                      android:textSize="15sp" />
-              </LinearLayout>
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/gothambold"
+                    android:text="Description :"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/other"
+                    android:layout_width="237dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/gothambold"
+                    android:gravity="left"
+                    android:text="Car Description"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp" />
+            </LinearLayout>
 
         </LinearLayout>
 

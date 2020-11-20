@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -26,6 +28,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -56,6 +60,7 @@ public class add3 extends AppCompatActivity {
     long p;
     long G;
     String O;
+    String x;
 
 
     @Override
@@ -110,6 +115,21 @@ public class add3 extends AppCompatActivity {
 
             }
         });*/
+        if (fAuth.getCurrentUser()!=null) {
+            DocumentReference documentReference = fStore.collection("users").document(userId);
+            documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if (documentSnapshot.exists()) {
+                        x = String.valueOf(documentSnapshot.getLong("Phone"));
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                }
+            });
+        }
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,6 +167,8 @@ public class add3 extends AppCompatActivity {
                 hashMap.put("Price",price.getText().toString());
                 hashMap.put("Gst",gst.getText().toString());
                 hashMap.put("RoadPrice",road_price.getText().toString());
+                hashMap.put("publisherEmail",fAuth.getCurrentUser().getEmail());
+                hashMap.put("publisherPhone",x);
 
 
                 fStore.collection("Models").add(hashMap);

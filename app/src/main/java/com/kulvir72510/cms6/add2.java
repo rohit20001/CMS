@@ -22,6 +22,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -52,6 +54,7 @@ public class add2 extends AppCompatActivity {
     long p;
     long G;
     String O;
+    String x;
 
 
 
@@ -96,6 +99,22 @@ public class add2 extends AppCompatActivity {
             }
         });
 
+        if (fAuth.getCurrentUser()!=null) {
+            DocumentReference documentReference = fStore.collection("users").document(userId);
+            documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if (documentSnapshot.exists()) {
+                        x = String.valueOf(documentSnapshot.getLong("Phone"));
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                }
+            });
+        }
+
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,6 +151,8 @@ public class add2 extends AppCompatActivity {
                 hashMap.put("Price",price.getText().toString());
                 hashMap.put("Gst",gst.getText().toString());
                 hashMap.put("RoadPrice",road_price.getText().toString());
+                hashMap.put("publisherEmail",fAuth.getCurrentUser().getEmail());
+                hashMap.put("publisherPhone",x);
 
 
                 fStore.collection("Models").add(hashMap);
