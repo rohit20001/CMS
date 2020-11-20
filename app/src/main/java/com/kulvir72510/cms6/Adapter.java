@@ -36,6 +36,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder> {
         holder.price.setText(UploadCurreent.getPrice());
         holder.gst.setText(UploadCurreent.getGst());
         holder.other.setText(UploadCurreent.getOther());
+        holder.contact.setText(UploadCurreent.getContact());
+        holder.email.setText(UploadCurreent.getEmail());
 
     }
 
@@ -46,10 +48,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder> {
     }
 
     public class  Viewholder extends RecyclerView.ViewHolder{
-        private TextView model_name,color,price,gst,other;
+        private TextView model_name,color,price,gst,other,email,contact;
 
         public Viewholder(@NonNull View itemView){
             super(itemView);
+            email=itemView.findViewById(R.id.email_id);
+            contact=itemView.findViewById(R.id.contact);
             model_name=itemView.findViewById(R.id.model_name);
             price=itemView.findViewById(R.id.price);
             color=itemView.findViewById(R.id.color);
