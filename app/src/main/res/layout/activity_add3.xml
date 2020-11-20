@@ -121,7 +121,7 @@
                 android:background="@drawable/rectangle"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="Road Price"
+                android:hint="Description"
                 android:inputType="textPersonName"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

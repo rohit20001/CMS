@@ -77,7 +77,9 @@ public class home3 extends AppCompatActivity {
                     String gst = documentSnapshot.getString("Gst");
                     String price = documentSnapshot.getString("Price");
                     String rp = documentSnapshot.getString("RoadPrice");
-                    mUploads.add(new ModelClass(model,color,gst,price,rp));
+                    String e = documentSnapshot.getString("publisherEmail");
+                    String p = documentSnapshot.getString("publisherPhone");
+                    mUploads.add(new ModelClass(model,color,gst,price,rp,p,e));
                 }
                 PostAdaptar=new Adapter(home3.this,mUploads);
                 recyclerView.setAdapter(PostAdaptar);

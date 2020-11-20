@@ -3,17 +3,14 @@ package com.kulvir72510.cms6;
 public class ModelClass {
     String model_name,color,price,gst,other,email,contact;
 
-    public ModelClass(String email, String contact) {
-        this.email = email;
-        this.contact = contact;
-    }
-
-    public ModelClass(String model_name, String color, String price, String phone, String other) {
+    public ModelClass(String model_name, String color, String price, String phone, String other,String email, String contact) {
         this.model_name = model_name;
         this.color = color;
         this.price = price;
         this.gst = phone;
         this.other = other;
+        this.email = email;
+        this.contact = contact;
     }
 
     public String getEmail() {

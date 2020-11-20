@@ -244,7 +244,9 @@ public class profile2 extends AppCompatActivity implements GoogleApiClient.OnCon
                     String gst = documentSnapshot.getString("Gst");
                     String price = documentSnapshot.getString("Price");
                     String rp = documentSnapshot.getString("RoadPrice");
-                    mUploads.add(new ModelClass(model,color,gst,price,rp));
+                    String e = documentSnapshot.getString("publisherEmail");
+                    String p = documentSnapshot.getString("publisherPhone");
+                    mUploads.add(new ModelClass(model,color,gst,price,rp,e,p));
                 }
                 PostAdaptar=new Adapter(profile2.this,mUploads);
                 recyclerView.setAdapter(PostAdaptar);
