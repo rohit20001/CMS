@@ -30,7 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Car Model :"
-                android:textSize="20sp"
+                android:textSize="25sp"
+                android:layout_marginLeft="5dp"
                 android:textColor="@color/colorPrimary"
                 android:layout_marginTop="8dp"/>
 
@@ -46,7 +47,7 @@
                 android:text="Car Model Name"
                 android:gravity="left"
                 android:textColor="@color/colorPrimary"
-                android:textSize="20sp" />
+                android:textSize="25sp" />
             </LinearLayout>
             <LinearLayout android:orientation="horizontal"
                 android:layout_height="wrap_content"
@@ -57,6 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Color :"
+                android:layout_marginLeft="5dp"
                 android:textSize="15sp"
                 android:textColor="@color/colorPrimary"
                 android:layout_marginTop="8dp"/>
@@ -84,6 +86,7 @@
                 android:layout_height="wrap_content"
                 android:text="Gst :"
                 android:textSize="15sp"
+                android:layout_marginLeft="5dp"
                 android:textColor="@color/colorPrimary"
                 android:layout_marginTop="8dp"/>
             <TextView
@@ -108,6 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Price :"
+                android:layout_marginLeft="5dp"
                 android:textSize="15sp"
                 android:textColor="@color/colorPrimary"
                 android:layout_marginTop="8dp"/>
@@ -136,6 +140,7 @@
                 android:layout_height="wrap_content"
                 android:text="Road Price :"
                 android:textSize="15sp"
+                android:layout_marginLeft="5dp"
                 android:textColor="@color/colorPrimary"
                 android:layout_marginTop="8dp"/>
 
