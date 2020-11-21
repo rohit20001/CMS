@@ -39,10 +39,23 @@
             android:layout_marginBottom="8dp"
             android:layout_marginRight="5dp"
             android:fontFamily="@font/gothambold"
-            android:text="Car Management System"
+            android:text="Car Management"
             android:gravity="center"
             android:textColor="@color/colorPrimary"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/model_name2"
+            android:layout_width="423dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="5dp"
+            android:fontFamily="@font/gothambold"
+            android:text="System"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -50,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="130dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="80dp"
         android:scrollbars="vertical" />
