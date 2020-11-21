@@ -57,4 +57,13 @@
     <string name="phone">Phone</string>
     <string name="address">Address</string>
     <string name="city">City</string>
+    <string name="bar_chart">Bar Chart</string>
+    <string name="pie_chart">Pie Chart</string>
+    <string name="radar_chart">Radar Chart</string>
+    <string name="enter_x_value">ENTER X VALUE</string>
+    <string name="x_value">X VALUE</string>
+    <string name="enter_y_value">ENTER Y VALUE</string>
+    <string name="y_value">Y VALUE</string>
+    <string name="insert">INSERT</string>
+    <string name="line_graph">Line Graph</string>
 </resources>
