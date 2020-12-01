@@ -1,4 +1,4 @@
-package com.rohti20001.cms6;
+package com.rohit20001.cms6;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
